@@ -1,0 +1,18 @@
+@mixin transition {
+  transition: all 0.15s ease-in-out;
+}
+
+@mixin link-decoration {
+  color: var(--cta_light) !important;
+  transition: all 0.25s ease-in-out;
+  padding: 4px 0 0 0;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.5px;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    text-decoration-color: var(--cta_light);
+  }
+}
