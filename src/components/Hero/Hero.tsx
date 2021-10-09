@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactTooltip from 'react-tooltip';
 import {ReactComponent as Vk} from '../../assets/vk.svg'
 import {ReactComponent as Tg} from '../../assets/tg.svg'
 import {ReactComponent as Inst} from '../../assets/inst.svg'
@@ -13,19 +14,38 @@ const Hero: React.FC = () => {
           <img src={logo} alt="Spot" />
         </div>
         <div className="social">
-          <a href="#" className="lnk">
+          <a
+            data-tip="Наше общение в Telegram"
+            href="https://t.me/spot_loft/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="lnk"
+          >
             <Tg />
           </a>
-          <a href="#" className="lnk">
+          <a
+            data-tip="Мы в Instagram"
+            href="https://www.instagram.com/spot_creative_space/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="lnk"
+          >
             <Inst />
           </a>
-          <a href="#" className="lnk">
+          <a
+            data-tip="Мы в Вконтакте"
+            href="https://vk.com/spot_creative_space"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="lnk"
+          >
             <Vk />
           </a>
         </div>
       </div>
+      <ReactTooltip effect="solid" type="light"/>
     </div>
-  );
+  )
 }
 
-export default React.memo(Hero)
+export default Hero
