@@ -1,0 +1,12 @@
+.Location {
+  display: flex;
+  height: 100vh;
+  background: white;
+  flex-direction: column;
+
+  > .text {
+    text-align: center;
+    font-size: 2em;
+    padding: 1rem;
+  }
+}
