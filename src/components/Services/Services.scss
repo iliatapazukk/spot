@@ -1,9 +1,10 @@
-.Location {
+.Services {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   height: 100vh;
   padding-top: 64px;
-  background: white;
-  flex-direction: column;
 
   > .text {
     text-align: center;

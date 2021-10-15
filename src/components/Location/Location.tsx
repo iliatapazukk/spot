@@ -1,6 +1,6 @@
 import React from 'react'
 import {YMaps, Map, Placemark, ZoomControl} from 'react-yandex-maps'
-import myIcon from '../../assets/map_logo.png'
+import myIcon from '../../assets/images/map_logo.png'
 import './Location.scss'
 
 const Location: React.FC = () => {
@@ -25,7 +25,7 @@ const Location: React.FC = () => {
   }
 
   return (
-    <div className="Location">
+    <div className="Location" id="Location">
       <YMaps query={{ load: 'control.ZoomControl' }}>
         <div className="text">
           <h2>Локация</h2>
