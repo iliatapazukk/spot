@@ -12,9 +12,9 @@ import { ReactComponent as Spot} from '../../assets/images/spot.svg'
 import './Hero.scss'
 
 const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2]
-const sky = (x, y) => `translate3d(${x / 20}px,${y / 20}px,0)`
+const sky = (x, y) => `translate3d(${x / 20}px,${y / 22}px,0)`
 const mountains = (x, y) => `translate3d(${x / 15}px, ${y / 15}px ,0)`
-const foreground = (x, y) => `translate3d(${x / 5}px,${y / 20}px,0)`
+const foreground = (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`
 
 const Hero: React.FC = () => {
   const [props, set] = useSpring(() => ({ xy: [0, 0], config: { mass: 10, tension: 550, friction: 140 } }))
