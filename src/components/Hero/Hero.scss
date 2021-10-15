@@ -61,9 +61,8 @@
   .parallax {
     position: absolute;
     height: 100vh;
-    left: -100px;
-    right: -100px;
-    width: calc(100% + 200px);
+    right: 0;
+    left: 0;
     z-index: -1;
     overflow: visible;
 
@@ -76,19 +75,26 @@
     }
 
     .sky {
-      top: -10%;
-      left: 0;
-      right: 0;
-      width: 100%;
+      top: -100px;
+      left: -100px;
+      right: -100px;
+      width: calc(100% + 200px);
       z-index: -10;
     }
 
     .mountains {
+      left: -100px;
+      right: -100px;
+      width: calc(100% + 200px);
       bottom: 4%;
       z-index: -2;
+      filter: brightness(80%);
     }
 
     .foreground {
+      left: -100px;
+      right: -100px;
+      width: calc(100% + 200px);
       top: 60%;
       z-index: -1;
     }
