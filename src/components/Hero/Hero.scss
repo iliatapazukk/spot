@@ -6,29 +6,22 @@
   justify-content: center;
   height: 100vh;
   width: 100%;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
 
   > .content {
-    padding: 1vmin;
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
-    max-width: 400px;
-
-    $tod-tri: #ff00ff;
-    $gold-tri: #fccc47;
+    justify-content: center;
+    background: rgba(#fff, 0.5);
 
     > .logo {
-      filter: drop-shadow(10px 10px 200px $tod-tri) drop-shadow(-10px -10px 50px $tod-tri);
       display: block;
-      height: 50vmin;
-      width: 50vmin;
+      width: 60vw;
       pointer-events: none;
-      border-radius: 50%;
       overflow: hidden;
       position: relative;
+      margin-top: 3rem;
 
       > img {
         height: 100%;
@@ -39,18 +32,23 @@
     > .social {
       display: flex;
       justify-content: space-around;
-      margin: 3rem 0 1rem 0;
+      margin: 3rem 0;
 
       > a {
         @include transition();
 
-        display: block;
-        color: white;
+        display: flex;
+        width: 60px;
+        height: 60px;
+        align-items: center;
+        justify-content: center;
+        color: #000;
         margin: 0 1.5rem;
         opacity: 0.9;
 
         img {
-          width: 10vmin;
+          display: block;
+          width: 100%;
         }
 
         &:hover {
@@ -60,16 +58,39 @@
       }
     }
   }
-}
+  .parallax {
+    position: absolute;
+    height: 100vh;
+    left: -100px;
+    right: -100px;
+    width: calc(100% + 200px);
+    z-index: -1;
+    overflow: visible;
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+    > .layer {
+      position: absolute;
+      width: 100%;
+      > img {
+        width: 100%;
+      }
+    }
+
+    .sky {
+      top: -10%;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: -10;
+    }
+
+    .mountains {
+      bottom: 4%;
+      z-index: -2;
+    }
+
+    .foreground {
+      top: 60%;
+      z-index: -1;
+    }
   }
 }
