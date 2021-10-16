@@ -1,9 +1,15 @@
+@import "../../styles/mixins";
+
 .Location {
   display: flex;
   height: 100vh;
   padding-top: 64px;
   flex-direction: row;
   background: var(--laser);
+
+  @include mobile {
+    flex-direction: column;
+  };
 
   > .text {
     text-align: right;
@@ -13,5 +19,14 @@
     width: 50%;
     flex-direction: column;
     flex-basis: 50%;
+
+    @include mobile {
+      width: 100%;
+    }
   }
+
+  > .map {
+    flex-basis: 50%;
+  }
+
 }

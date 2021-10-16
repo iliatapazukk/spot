@@ -6,6 +6,7 @@
   justify-content: center;
   height: 100vh;
   width: 100%;
+  overflow: hidden;
 
   > .content {
     display: flex;
@@ -61,6 +62,7 @@
   .parallax {
     position: absolute;
     height: 100vh;
+    width: 100%;
     right: 0;
     left: 0;
     z-index: -1;
@@ -80,7 +82,13 @@
       width: calc(100% + 200px);
       z-index: -10;
       opacity: 0;
-      animation: fadeInDown 1.5s linear forwards;
+
+      @include mobile {
+        animation: fadeInDownMobile 1.5s linear forwards;
+      }
+      @include desktop {
+        animation: fadeInDown 1.5s linear forwards;
+      }
     }
 
     @keyframes fadeInDown {
@@ -93,6 +101,16 @@
         top: -100px;
       }
     }
+    @keyframes fadeInDownMobile {
+      0% {
+        opacity: 0;
+        top: -300px;
+      }
+      100% {
+        opacity: 1;
+        top: 0;
+      }
+    }
 
     .mountains {
       left: -100px;
@@ -101,15 +119,25 @@
 
       z-index: -2;
       opacity: 0;
-      filter: brightness(70%);
-      animation: fadeInUp 1.2s linear forwards;
       animation-delay: 1.5s;
+
+      @include mobile {
+        animation: fadeInUpMobile 1s linear forwards;
+        width: 100%;
+        left: 0;
+        right: 0;
+      }
+      @include desktop {
+        filter: brightness(70%);
+        animation: fadeInUp 1.2s linear forwards;
+
+      }
     }
 
     @keyframes fadeInUp {
       0% {
         opacity: 0;
-        bottom: -200px;
+        bottom: 4%;
       }
       50% {
         opacity: 1;
@@ -119,15 +147,40 @@
         bottom: 4%;
       }
     }
+
+    @keyframes fadeInUpMobile {
+      0% {
+        opacity: -100px;
+        bottom: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 1;
+        bottom: 4%;
+      }
+    }
+
     .foreground {
       left: -100px;
       right: -100px;
       width: calc(100% + 200px);
       top: 60%;
       z-index: -1;
-      animation: fadeInUp 2s linear forwards;
-      opacity: 0;
+      @include desktop {
+        opacity: 0;
+        animation: fadeInUp 2s linear forwards;
+      }
+
+      @include mobile {
+        top: 86%;
+        width: 100%;
+        left: 0;
+        right: 0;
+      }
     }
+
     @keyframes fadeIn {
       0% {
         opacity: 0;
@@ -136,5 +189,6 @@
         opacity: 1;
       }
     }
+
   }
 }

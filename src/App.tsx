@@ -9,8 +9,8 @@ import './styles/App.scss'
 function App() {
   return (
     <div className="App">
-      <Navbar/>
       <Hero/>
+      <Navbar/>
       <Services />
       <Location/>
     </div>
