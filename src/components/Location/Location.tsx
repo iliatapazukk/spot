@@ -1,6 +1,7 @@
 import React from 'react'
 import {YMaps, Map, Placemark, ZoomControl} from 'react-yandex-maps'
 import myIcon from '../../assets/images/map_logo.png'
+import myIcon from '../../assets/map_logo.png'
 import './Location.scss'
 
 const Location: React.FC = () => {
