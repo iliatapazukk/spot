@@ -1,0 +1,33 @@
+$shadow_green: #9abdbd;
+$heather: #b1bfc8;
+$main_bg: #b7c6c1;
+$corduroy: #687270;
+$stardust: #a4a3a1;
+$cotton_seed: #c2bfb6;
+$avocado: #858b62;
+$laser: #c5bf5e;
+$harvest_gold: #dcb675;
+$widgets_bg: #ffffff;
+$mine_shaft: #242020;
+$pewter_secondary: #909d99;
+$edward_disabled: #aab9b4;
+
+:root {
+  --shadow_green: #{$shadow_green};
+  --heather: #{$heather};
+  --main_bg: #{$main_bg};
+  --corduroy: #{$corduroy};
+  --stardust: #{$stardust};
+  --cotton_seed: #{$cotton_seed};
+  --avocado: #{$avocado};
+  --laser: #{$laser};
+  --harvest_gold: #{$harvest_gold};
+  --widgets_bg: #{$widgets_bg};
+  --mine_shaft: #{$mine_shaft};
+  --pewter_secondary: #{$pewter_secondary};
+  --edward_disabled: #{$edward_disabled};
+}
+
+@media (prefers-color-scheme: dark) {
+  //...
+}

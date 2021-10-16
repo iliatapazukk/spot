@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactTooltip from 'react-tooltip'
-import ReactDOM from 'react-dom'
 import { useSpring, animated } from 'react-spring'
 import { ReactComponent as Vk } from '../../assets/images/vk.svg'
 import { ReactComponent as Tg } from '../../assets/images/tg.svg'

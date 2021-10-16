@@ -9,7 +9,7 @@ import './styles/App.scss'
 function App() {
   return (
     <div className="App">
-      {/*<Navbar/>*/}
+      <Navbar/>
       <Hero/>
       <Services />
       <Location/>

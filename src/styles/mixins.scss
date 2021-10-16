@@ -1,3 +1,55 @@
+/*
+ font-face
+ Входящие значения [ font-name | src | font-weight | font-style ]
+ @include font-face(AvenirNextCyr-Regular, "./assets/fonts/AvenirNextCyr-Regular", 400, normal);
+*/
+@mixin font-face($font-name, $path, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: $font-name;
+    src:
+    local($font-name),
+    url($path+".woff2") format("woff2"),
+    url($path+".woff") format("woff"),
+    url($path+".ttf") format("truetype");
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+/*
+ font-variant
+ Входящие значения [ font-size | line-height | letter-spacing | font-weight ]
+ @include font-variant(18, 24, -0.15px, 500);
+*/
+@mixin font-variant($font-size, $line-height: normal, $letter-spacing: normal, $font-weight: normal) {
+  font-size: $font-size * 1px;
+
+  @if $line-height==normal {
+    line-height: normal;
+  }
+
+  @else {
+    line-height: $line-height / $font-size;
+  }
+
+  @if $letter-spacing==normal {
+    letter-spacing: normal;
+  }
+
+  @else {
+    letter-spacing: $letter-spacing;
+  }
+
+  @if $font-weight==normal {
+    $font-weight: 400;
+  }
+
+  @else {
+    font-weight: $font-weight;
+  }
+}
+
 @mixin transition {
   transition: all 0.3s ease-in-out;
 }

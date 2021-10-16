@@ -33,7 +33,7 @@ const Location: React.FC = () => {
             с. Соколиное, ул. Ленина, д. 6</p>
         </div>
         <Map
-          width="100%"
+          width="50%"
           height="100%"
           state={mapState}
         >
