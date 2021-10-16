@@ -130,14 +130,13 @@
       @include desktop {
         filter: brightness(70%);
         animation: fadeInUp 1.2s linear forwards;
-
       }
     }
 
     @keyframes fadeInUp {
       0% {
-        opacity: 0;
-        bottom: 4%;
+        opacity: 0.5;
+        bottom: -200px;
       }
       50% {
         opacity: 1;
