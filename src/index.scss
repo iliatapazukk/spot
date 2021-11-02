@@ -13,6 +13,7 @@ body {
 
   font-family: 'Avenir Next Regular', system-ui, Roboto, serif;
   margin: 0;
+  font-size: 1.2rem;
   color: var(--mine_shaft);
   background: var(--main_bg);
   -webkit-font-smoothing: antialiased;
@@ -23,6 +24,12 @@ h1, h2 , h3 {
   @include font-variant(36, 54, normal, 600);
 
   font-family: 'Avenir Next Bold', system-ui, Roboto, serif;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--mine_shaft);
+}
+
+p {
+  margin-bottom: 1rem;
 }
 
 code {

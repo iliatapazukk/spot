@@ -1,0 +1,30 @@
+.About {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  max-width: 1280px;
+  overflow: hidden;
+  padding: 64px;
+
+  > .header {
+    width: 100%;
+    margin-top: 64px;
+  }
+  > .text {
+    margin: auto;
+    font-size: 1.2rem;
+    width: 50%;
+    padding: 1rem;
+  }
+
+  > .house {
+    font-size: 1.2rem;
+    width: 30%;
+    position: absolute;
+    right: 0;
+    top: 64px;
+  }
+}
