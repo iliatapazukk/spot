@@ -1,4 +1,5 @@
 @import "src/styles/mixins";
+@import "src/styles/variables";
 
 .Hero {
   display: flex;
@@ -19,14 +20,27 @@
     > .logo {
       display: block;
       width: 60vw;
-      pointer-events: none;
       overflow: hidden;
       position: relative;
       margin-top: 3rem;
 
-      > img {
+      > svg {
         height: 100%;
         width: 100%;
+      }
+
+      > .menu {
+        @include transition;
+
+        opacity: 0;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+
+        > svg {
+          width: 100%;
+          height: 100%;
+        }
       }
     }
 
@@ -47,7 +61,7 @@
         margin: 0 1.5rem;
         opacity: 0.9;
 
-        img {
+        svg {
           display: block;
           width: 100%;
         }
@@ -58,7 +72,43 @@
         }
       }
     }
+
+    &.-is-scrolled {
+      position: fixed;
+      z-index: 20000;
+      height: $header-scrolled-height;
+      top: 0;
+      left: 0;
+      flex-direction: row;
+      justify-content: space-between;
+
+      > .logo {
+        width: 100px;
+        margin: 0.5rem 1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+        z-index: 1000;
+
+        > .menu {
+          opacity: 1;
+          margin-left: 0.5rem;
+          width: 40px;
+          height: 26px;
+        }
+      }
+
+      > .social {
+        > a {
+          width: 30px;
+          height: 30px;
+          margin: 0 1rem;
+        }
+      }
+    }
   }
+
   .parallax {
     position: absolute;
     height: 100vh;

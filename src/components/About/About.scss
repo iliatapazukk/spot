@@ -1,3 +1,5 @@
+@import "src/styles/variables";
+
 .About {
   display: flex;
   align-items: center;
@@ -7,16 +9,18 @@
   position: relative;
   max-width: 1280px;
   overflow: hidden;
-  padding: 64px;
+  padding: $header-scrolled-height*2 $header-scrolled-height $header-scrolled-height;
 
   > .header {
     width: 100%;
-    margin-top: 64px;
+    margin-top: $header-scrolled-height;
+    max-width: 800px;
   }
+
   > .text {
     margin: auto;
     font-size: 1.2rem;
-    //width: 60%;
+    max-width: 600px;
     padding: 1rem 4rem;
   }
 
@@ -25,6 +29,6 @@
     width: 30%;
     position: absolute;
     right: 0;
-    top: 64px;
+    top: $header-scrolled-height*2;
   }
 }

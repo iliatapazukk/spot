@@ -1,6 +1,7 @@
 import React from 'react'
-import ReactTooltip from 'react-tooltip'
+import cx from 'classnames'
 import { useSpring, animated } from 'react-spring'
+
 import { ReactComponent as Vk } from '../../assets/images/vk.svg'
 import { ReactComponent as Tg } from '../../assets/images/tg.svg'
 import { ReactComponent as Inst } from '../../assets/images/inst.svg'
@@ -8,28 +9,44 @@ import { ReactComponent as Sky } from '../../assets/images/sky.svg'
 import { ReactComponent as Mountains } from '../../assets/images/mountains.svg'
 import { ReactComponent as Foreground } from '../../assets/images/foreground.svg'
 import { ReactComponent as Spot} from '../../assets/images/spot.svg'
+import { ReactComponent as Menu} from '../../assets/images/menu.svg'
 import './Hero.scss'
 
-const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2]
-const sky = (x, y) => `translate3d(${x / 30}px,${y / 25}px,0)`
-const mountains = (x, y) => `translate3d(${x / 25}px, ${y / 20}px ,0)`
-const foreground = (x, y) => `translate3d(${x / 18}px,${y / 15}px,0)`
+// const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2]
+// const sky = (x, y) => `translate3d(${x / 30}px,${y / 25}px,0)`
+// const mountains = (x, y) => `translate3d(${x / 25}px, ${y / 20}px ,0)`
+// const foreground = (x, y) => `translate3d(${x / 18}px,${y / 15}px,0)`
+
 
 const Hero: React.FC = () => {
-  const [props, set] = useSpring(() => ({ xy: [0, 0], config: { mass: 10, tension: 550, friction: 140 } }))
+  // const [props, set] = useSpring(() => ({ xy: [0, 0], config: { mass: 10, tension: 550, friction: 140 } }))
+
+  const [scroll, setScroll] = React.useState<boolean>(false)
+  const height = window.innerHeight/2
+  React.useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setScroll(window.scrollY > height)
+    })
+  }, [window])
+
+  const scrollTop = () => {
+    if (scroll) window.scrollTo({top: 0, behavior: 'smooth'})
+  }
   return (
     <div
       className="Hero"
       id="Hero"
-      onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })}
+      // onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })}
     >
-      <div className="content">
+      <div className={cx('content', scroll && '-is-scrolled')}>
         <div className="logo">
-          <Spot />
+          <Spot onClick={scrollTop}/>
+          <div className="menu">
+            <Menu />
+          </div>
         </div>
         <div className="social">
           <a
-            data-tip="Наше общение в Telegram"
             href="https://t.me/spot_loft/"
             target="_blank"
             rel="noreferrer noopener"
@@ -38,7 +55,6 @@ const Hero: React.FC = () => {
             <Tg />
           </a>
           <a
-            data-tip="Мы в Instagram"
             href="https://www.instagram.com/spot_creative_space/"
             target="_blank"
             rel="noreferrer noopener"
@@ -47,7 +63,6 @@ const Hero: React.FC = () => {
             <Inst />
           </a>
           <a
-            data-tip="Мы в Вконтакте"
             href="https://vk.com/spot_creative_space"
             target="_blank"
             rel="noreferrer noopener"
@@ -57,22 +72,21 @@ const Hero: React.FC = () => {
           </a>
         </div>
       </div>
-      <ReactTooltip effect="solid" type="light"/>
       <div className="parallax">
         <animated.div
-          style={{ transform: props.xy.interpolate(sky) }}
+          // style={{ transform: props.xy.interpolate(sky) }}
           className="layer sky"
         >
           <Sky/>
         </animated.div>
         <animated.div
-          style={{ transform: props.xy.interpolate(mountains) }}
+          // style={{ transform: props.xy.interpolate(mountains) }}
           className="layer mountains"
         >
           <Mountains/>
         </animated.div>
         <animated.div
-          style={{ transform: props.xy.interpolate(foreground) }}
+          // style={{ transform: props.xy.interpolate(foreground) }}
           className="layer foreground"
         >
           <Foreground/>
