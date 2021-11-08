@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import Location from './components/Location'
 import Navbar from './components/Navbar'
 import Services from './components/Services'
+import { ReactComponent as Footer} from './assets/images/footer.svg'
 
 import './styles/App.scss'
 import About from './components/About';
@@ -15,6 +16,7 @@ function App() {
       <About />
       <Services />
       <Location/>
+      <Footer />
     </div>
   );
 }

@@ -11,32 +11,33 @@ const About: React.FC = () => {
   })
 
   const houseVariants = {
-    hidden: {
-      x: 400,
-    },
-    visible: {
-      x: -20,
-    }
+    hidden: { x: 400,},
+    visible: { x: 0,}
   }
   const textVariants = {
-    visible: { opacity: 1, scale: 1, y: 50 },
-    hidden: {
-      opacity: 0,
-      scale: 0.85,
-      y: 0
-    }
+    visible: { opacity: 1, y: 20 },
+    hidden: { opacity: 0, y: 0 }
+  }
+  const strokeVariants = {
+    visible: { width: '100%'},
+    hidden: { width: 0},
+    transition: { type: 'tween', duration: 1 }
   }
 
   return (
-    <div className="About" id="About">
+    <div className="About" id="About" ref={ref}>
       <h2 className="header">Привет, друг!</h2>
+      <motion.div
+        className="stroke"
+        variants={strokeVariants}
+        animate={inView ? 'visible' : 'hidden'}
+      />
       <motion.div
         className="house"
         animate={inView ? 'visible' : 'hidden'}
         variants={houseVariants}
-        ref={ref}
         transition={{
-          duration: 1,
+          duration: 2,
         }}
       >
         <House className="house"/>
@@ -45,7 +46,6 @@ const About: React.FC = () => {
         animate={inView ? 'visible' : 'hidden'}
         variants={textVariants}
         transition={{duration: 1, ease: 'easeOut'}}
-        ref={ref}
         className="text"
       >
         <p>Когда окажешься в Бельбекской долине, заходи в гости - у нас всегда происходит что-нибудь интересное!</p>

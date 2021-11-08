@@ -31,18 +31,18 @@ const Location: React.FC = () => {
         <p>Крым, Бахчисарайский район,<br />
           с. Соколиное, ул. Ленина, д. 6</p>
       </div>
-        <div className="map">
-          <YMaps query={{ load: 'control.ZoomControl' }}>
-            <Map
-              width="100%"
-              height="100%"
-              state={mapState}
-            >
-              <ZoomControl/>
-              <Placemark {...placeMarkState}/>
-            </Map>
-          </YMaps>
-        </div>
+      <div className="map">
+        <YMaps query={{ load: 'control.ZoomControl' }}>
+          <Map
+            width="100%"
+            height="100%"
+            state={mapState}
+          >
+            <ZoomControl/>
+            <Placemark {...placeMarkState}/>
+          </Map>
+        </YMaps>
+      </div>
     </div>
   )
 }

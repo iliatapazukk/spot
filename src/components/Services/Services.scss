@@ -1,33 +1,45 @@
 @import "src/styles/variables";
+@import "src/styles/mixins";
 
 .Services {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
-  padding-top: 64px;
+  min-height: 100vh;
+  margin-bottom: 100px;
   position: relative;
+
+  padding: $header-scrolled-height*2 $header-scrolled-height $header-scrolled-height;
+
+  @include mobile {
+    padding: $header-scrolled-height $header-scrolled-height/2 $header-scrolled-height/2;
+  }
 
   > .header {
     width: 100%;
-    padding: $header-scrolled-height 6rem;
+    max-width: $max-width;
+    margin: auto;
     border: none;
     text-align: right;
   }
 
   > .text {
-    margin: 0 0 0 auto;
-    font-size: 1.2rem;
     max-width: 600px;
-    padding: 1rem 4rem;
+    margin: $header-scrolled-height 0 0 auto;
+    font-size: 1.2rem;
+
+    > .residents li {
+      margin-bottom: 1rem;
+    }
   }
 
   > .divider {
-    position: absolute;
     width: 100%;
-    top: 0;
-    left: 0;
+    //position: absolute;
+    //width: 100%;
+    //top: -80px;
+    //left: 0;
 
     > svg {
       width: 100%;

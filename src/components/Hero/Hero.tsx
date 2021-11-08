@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
     window.addEventListener("scroll", () => {
       setScroll(window.scrollY > height)
     })
-  }, [window])
+  }, [height])
 
   const scrollTop = () => {
     if (scroll) window.scrollTo({top: 0, behavior: 'smooth'})

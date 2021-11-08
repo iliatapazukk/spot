@@ -1,15 +1,20 @@
 @import "src/styles/variables";
+@import "src/styles/mixins";
 
 .About {
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-direction: column;
   min-height: 100vh;
+  max-width: $max-width;
   position: relative;
-  max-width: 1280px;
+  margin: auto;
   overflow: hidden;
   padding: $header-scrolled-height*2 $header-scrolled-height $header-scrolled-height;
+
+  @include mobile {
+    padding: $header-scrolled-height $header-scrolled-height/2 $header-scrolled-height/2;
+  }
 
   > .header {
     width: 100%;
@@ -17,18 +22,21 @@
     max-width: 800px;
   }
 
+  > .stroke {
+    height: 2px;
+    background: var(--mine_shaft);
+  }
+
   > .text {
-    margin: auto;
+    margin-top: $header-scrolled-height;
     font-size: 1.2rem;
     max-width: 600px;
-    padding: 1rem 4rem;
   }
 
   > .house {
-    font-size: 1.2rem;
-    width: 30%;
+    width: 400px;
     position: absolute;
     right: 0;
-    top: $header-scrolled-height*2;
+    top: 150px;
   }
 }
