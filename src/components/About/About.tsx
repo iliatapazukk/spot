@@ -25,7 +25,7 @@ const About: React.FC = () => {
   }
 
   return (
-    <div className="About" id="About" ref={ref}>
+    <div className="About" ref={ref}>
       <h2 className="header">Привет, друг!</h2>
       <motion.div
         className="stroke"

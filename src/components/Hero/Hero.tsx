@@ -1,6 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
-import { useSpring, animated } from 'react-spring'
+import { animated } from 'react-spring'
 
 import { ReactComponent as Vk } from '../../assets/images/vk.svg'
 import { ReactComponent as Tg } from '../../assets/images/tg.svg'
@@ -12,13 +12,11 @@ import { ReactComponent as Spot} from '../../assets/images/spot.svg'
 import { ReactComponent as Menu} from '../../assets/images/menu.svg'
 import './Hero.scss'
 
-// const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2]
-// const sky = (x, y) => `translate3d(${x / 30}px,${y / 25}px,0)`
-// const mountains = (x, y) => `translate3d(${x / 25}px, ${y / 20}px ,0)`
-// const foreground = (x, y) => `translate3d(${x / 18}px,${y / 15}px,0)`
+type Props = {
+  menuToggle: () => void
+}
 
-
-const Hero: React.FC = () => {
+const Hero: React.FC<Props> = (props) => {
   // const [props, set] = useSpring(() => ({ xy: [0, 0], config: { mass: 10, tension: 550, friction: 140 } }))
 
   const [scroll, setScroll] = React.useState<boolean>(false)
@@ -41,7 +39,7 @@ const Hero: React.FC = () => {
       <div className={cx('content', scroll && '-is-scrolled')}>
         <div className="logo">
           <Spot onClick={scrollTop}/>
-          <div className="menu">
+          <div className="menu" onClick={props.menuToggle}>
             <Menu />
           </div>
         </div>
@@ -74,19 +72,16 @@ const Hero: React.FC = () => {
       </div>
       <div className="parallax">
         <animated.div
-          // style={{ transform: props.xy.interpolate(sky) }}
           className="layer sky"
         >
           <Sky/>
         </animated.div>
         <animated.div
-          // style={{ transform: props.xy.interpolate(mountains) }}
           className="layer mountains"
         >
           <Mountains/>
         </animated.div>
         <animated.div
-          // style={{ transform: props.xy.interpolate(foreground) }}
           className="layer foreground"
         >
           <Foreground/>
