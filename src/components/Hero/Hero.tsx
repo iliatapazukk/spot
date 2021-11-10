@@ -1,6 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
-import { animated } from 'react-spring'
+import { motion } from 'framer-motion'
 
 import { ReactComponent as Vk } from '../../assets/images/vk.svg'
 import { ReactComponent as Tg } from '../../assets/images/tg.svg'
@@ -17,8 +17,6 @@ type Props = {
 }
 
 const Hero: React.FC<Props> = (props) => {
-  // const [props, set] = useSpring(() => ({ xy: [0, 0], config: { mass: 10, tension: 550, friction: 140 } }))
-
   const [scroll, setScroll] = React.useState<boolean>(false)
   const height = window.innerHeight/2
   React.useEffect(() => {
@@ -30,11 +28,12 @@ const Hero: React.FC<Props> = (props) => {
   const scrollTop = () => {
     if (scroll) window.scrollTo({top: 0, behavior: 'smooth'})
   }
+
+
   return (
-    <div
+    <motion.div
       className="Hero"
       id="Hero"
-      // onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })}
     >
       <div className={cx('content', scroll && '-is-scrolled')}>
         <div className="logo">
@@ -71,23 +70,23 @@ const Hero: React.FC<Props> = (props) => {
         </div>
       </div>
       <div className="parallax">
-        <animated.div
+        <motion.div
           className="layer sky"
         >
           <Sky/>
-        </animated.div>
-        <animated.div
+        </motion.div>
+        <motion.div
           className="layer mountains"
         >
           <Mountains/>
-        </animated.div>
-        <animated.div
+        </motion.div>
+        <motion.div
           className="layer foreground"
         >
           <Foreground/>
-        </animated.div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

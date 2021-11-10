@@ -19,15 +19,22 @@
   > .header {
     width: 100%;
     max-width: $max-width;
-    margin: auto;
-    border: none;
-    text-align: right;
+
+    @include desktop {
+      margin: auto;
+      border: none;
+      text-align: right;
+    }
   }
 
   > .text {
     max-width: 600px;
     margin: $header-scrolled-height 0 0 auto;
     font-size: 1.2rem;
+
+    @include mobile {
+      margin-top: 20px;
+    }
 
     > .residents li {
       margin-bottom: 1rem;
