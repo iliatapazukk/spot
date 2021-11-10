@@ -1,0 +1,64 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.Contacts {
+  display: flex;
+  padding: 64px 0;
+  max-width: $max-width;
+  margin: auto;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  @include mobile {
+    flex-direction: column;
+  };
+
+  > .text {
+    justify-content: center;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  > .message-form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+
+    > input,
+    > textarea {
+      font-size: 1rem;
+      font-family: 'Avenir Next Regular', system-ui, Roboto, serif;
+      margin: 8px;
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      resize: none;
+      box-sizing: border-box;
+      border: 1px solid var(--corduroy);
+      background: var(--heather);
+      outline: none;
+    }
+
+    > textarea {
+      height: 180px;
+    }
+
+    > .send {
+      background: var(--pewter_secondary);
+      font-weight: bold;
+    }
+
+    > .error {
+      color: #9e0303;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+}

@@ -5,6 +5,7 @@ import Hero from './components/Hero'
 import Location from './components/Location'
 import Services from './components/Services'
 import About from './components/About'
+import Contacts from './components/Contacts'
 import { ReactComponent as Footer} from './assets/images/footer.svg'
 import './styles/App.scss'
 
@@ -13,6 +14,7 @@ const menuItems = [
   {id: 'About', name: 'Наша миссия'},
   {id: 'Services', name: 'Что мы делаем'},
   {id: 'Location', name: 'Локация'},
+  {id: 'Contacts', name: 'Связаться с нами'},
 ]
 
 function App() {
@@ -71,6 +73,7 @@ function App() {
       <About />
       <Services />
       <Location/>
+      <Contacts />
       <Footer />
     </div>
   );
