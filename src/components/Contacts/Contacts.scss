@@ -30,35 +30,52 @@
     display: flex;
     flex-direction: column;
     width: 40%;
+    > label {
+      > p {
+        margin: 0;
+        font-size: 0.9rem;
 
-    > input,
-    > textarea {
-      font-size: 1rem;
-      font-family: 'Avenir Next Regular', system-ui, Roboto, serif;
-      margin: 8px;
-      width: 100%;
-      padding: 8px;
-      border-radius: 6px;
-      resize: none;
-      box-sizing: border-box;
-      border: 1px solid var(--corduroy);
-      background: var(--heather);
-      outline: none;
-    }
+        > .error {
+          color: #9e0303;
+          font-size: 0.9rem;
+        }
+      }
+      > input,
+      > textarea {
+        @include  transition;
 
-    > textarea {
-      height: 180px;
+        font-size: 1rem;
+        font-family: 'Avenir Next Regular', system-ui, Roboto, serif;
+        margin: 8px 0;
+        width: 100%;
+        padding: 8px;
+        border-radius: 6px;
+        resize: none;
+        box-sizing: border-box;
+        border: none;
+        background: transparent;
+        outline: none;
+        box-shadow: inset 1px 1px 2px 1px var(--corduroy);
+
+        &:active,
+        &:focus {
+          background-color: rgba($shadow_green, 0.5);
+        }
+      }
+
+      > textarea {
+        height: 180px;
+      }
     }
 
     > .send {
+      font-size: 1rem;
       background: var(--pewter_secondary);
       font-weight: bold;
-    }
-
-    > .error {
-      color: #9e0303;
-      font-size: 0.9rem;
-      padding: 0.5rem 1rem;
+      padding: 1rem;
+      border: none;
+      border-radius: 6px;
+      box-shadow: 1px 1px 2px 1px var(--corduroy);
     }
   }
 }

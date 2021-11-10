@@ -43,10 +43,9 @@
 
   > .divider {
     width: 100%;
-    //position: absolute;
-    //width: 100%;
-    //top: -80px;
-    //left: 0;
+    position: absolute;
+    top: calc(70%);
+    left: 0;
 
     > svg {
       width: 100%;

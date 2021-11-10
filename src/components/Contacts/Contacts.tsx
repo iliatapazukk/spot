@@ -6,6 +6,7 @@ type Props = {}
 
 type FormData = {
   email: string,
+  subject: string,
   message: string,
 }
 
@@ -18,20 +19,33 @@ const Contacts: React.FC<Props> = (props) => {
         <h3>Свяжитесь с нами</h3>
         <p>
           Если у вас есть вопросы, пожелания или предложения, напишите нам. <br/>
-          или задайте вопрос в нашем
+          или задайте вопрос в нашем <br />
           <a href="https://t.me/spot_chat" target="_blank" rel="noreferrer noopener">телеграм-канале</a>
         </p>
       </div>
       <form className="message-form" onSubmit={onSubmit}>
-        {errors.email && (
-          <div className="error">Будьте добры, укажите ваш Email</div>
-        )}
-        <input {...register("email",{ required: true })} placeholder="Email" />
+        <label>
+          <p>Email для обратной связи
+            {errors.email && (
+              <span className="error">&nbsp;необходимо заполнить</span>
+            )}
+          </p>
+          <input {...register("email",{ required: true })} />
+        </label>
+        <label>
+          <p>Тема письма</p>
+          <input {...register("subject")} />
+        </label>
+        <label>
+          <p>Текст сообщения
+            {errors.message && (
+            <span className="error">&nbsp; отсутствует, не стесняйтесь</span>
+          )}</p>
+          <textarea {...register("message",{ required: true })} />
+        </label>
 
-        {errors.message && (
-          <div className="error">Не надо стесняться, пишите</div>
-        )}
-        <textarea {...register("message",{ required: true })} placeholder="Сообщение" />
+
+
 
         <input className="send" type="submit" value="Отправить" />
       </form>
