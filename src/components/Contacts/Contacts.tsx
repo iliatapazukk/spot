@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import myIcon from '../../assets/images/map_logo.png'
 import {Map, Placemark, YMaps, ZoomControl} from 'react-yandex-maps'
 import { ReactComponent as Footer} from '../../assets/images/footer.svg'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import './Contacts.scss'
 
@@ -84,11 +84,18 @@ const Contacts: React.FC<Props> = (props) => {
           </p>
         </div>
           {isEmailSend ? (
-            <div className="success">
-              <h4>Спасибо за ваш отзыв!</h4>
-            </div>
+            <AnimatePresence>
+              <motion.div
+                className="success"
+                initial={{ opacity: 0, scale: 0, borderRadius: '50%' }}
+                animate={{ opacity: 1,  scale: 1, borderRadius: '8px', transition: {duration: 1.2} }}
+                >
+                <h4>Спасибо за ваше сообщение!</h4>
+              </motion.div>
+            </AnimatePresence>
           ) : (
-            <form className="message-form" onSubmit={handleSubmit(onSubmit)}>
+            <form
+              className="message-form" onSubmit={handleSubmit(onSubmit)}>
               <label>
                 <p>Ваше имя</p>
                 <input {...register("subject")} />
@@ -96,7 +103,13 @@ const Contacts: React.FC<Props> = (props) => {
               <label>
                 <p>E-mail
                   {errors.email && (
-                    <span className="error">, обязательное поле</span>
+                    <AnimatePresence>
+                      <motion.span
+                        className="error"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1, transition: {duration: 1} }}
+                      >, обязательное поле или неверный формат</motion.span>
+                    </AnimatePresence>
                   )}
                 </p>
                 <input {...register("email",{
@@ -110,9 +123,18 @@ const Contacts: React.FC<Props> = (props) => {
               <label>
                 <p>Ваше сообщение
                   {errors.message && (
-                  <span className="error">&nbsp; отсутствует, не стесняйтесь</span>
+                  <AnimatePresence>
+                    <motion.span
+                      className="error"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1, transition: {duration: 1} }}
+                    >&nbsp; не заполнено, не стесняйтесь</motion.span>
+                  </AnimatePresence>
                 )}</p>
-                <textarea {...register("message",{ required: true })} />
+                <textarea
+                  maxLength={1600}
+                  {...register("message",{ required: true })}
+                />
               </label>
               <input className="send" type="submit" value="Отправить" />
         </form>
