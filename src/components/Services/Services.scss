@@ -8,12 +8,11 @@
   flex-direction: column;
   min-height: 100vh;
   position: relative;
-
   padding: $header-scrolled-height*2 $header-scrolled-height $header-scrolled-height;
 
   @include mobile {
-    background: rgba($main_bg, 0.8);
-    padding: $header-scrolled-height $header-scrolled-height/2 $header-scrolled-height/2;
+    background: rgba($main_bg, 0.9);
+    padding: $header-scrolled-height/2;
   }
 
   > .header {
