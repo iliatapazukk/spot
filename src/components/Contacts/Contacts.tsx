@@ -69,10 +69,16 @@ const Contacts: React.FC<Props> = (props) => {
           <label>
             <p>E-mail
               {errors.email && (
-                <span className="error">&nbsp;необходимо заполнить</span>
+                <span className="error">, обязательное поле</span>
               )}
             </p>
-            <input {...register("email",{ required: true })} />
+            <input {...register("email",{
+              required: true,
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: ''
+              }
+            })} />
           </label>
           <label>
             <p>Ваше сообщение
