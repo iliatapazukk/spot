@@ -85,6 +85,16 @@
         @include button;
       }
     }
+    > .success {
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+      align-items: center;
+      min-height: 340px;
+      background: rgba($main_bg, 0.9);
+      padding: $header-scrolled-height/2;
+
+    }
   }
 
   > .location {

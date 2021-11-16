@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import myIcon from '../../assets/images/map_logo.png'
 import {Map, Placemark, YMaps, ZoomControl} from 'react-yandex-maps'
@@ -8,6 +9,8 @@ import { useInView } from 'react-intersection-observer'
 import './Contacts.scss'
 
 type Props = {}
+
+const API_PATH = 'https://spotcreative.space/api/contact/index.php'
 
 type FormData = {
   email: string,
@@ -27,8 +30,27 @@ const Contacts: React.FC<Props> = (props) => {
     triggerOnce: true
   })
 
-  const { register, setValue, handleSubmit, formState: { errors } } = useForm<FormData>();
-  const onSubmit = handleSubmit(data => console.log(data));
+  const [isEmailSend, setIsEmailSend] = React.useState<boolean>(false)
+
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+  const onSubmit = (data) => {
+    axios({
+      method: 'POST',
+      url: `${API_PATH}`,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: data
+    })
+      .then((response) => {
+        setIsEmailSend(true)
+        console.log('!!! ', response)
+      })
+      .catch((error) => {
+        setIsEmailSend(false)
+        console.log('!!!', error)
+      })
+  }
 
   //TODO: проставить типы
   const mapState: any = {
@@ -61,34 +83,40 @@ const Contacts: React.FC<Props> = (props) => {
             <a href="https://t.me/spot_chat" target="_blank" rel="noreferrer noopener">телеграм-канале</a>
           </p>
         </div>
-        <form className="message-form" onSubmit={onSubmit}>
-          <label>
-            <p>Ваше имя</p>
-            <input {...register("subject")} />
-          </label>
-          <label>
-            <p>E-mail
-              {errors.email && (
-                <span className="error">, обязательное поле</span>
-              )}
-            </p>
-            <input {...register("email",{
-              required: true,
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: ''
-              }
-            })} />
-          </label>
-          <label>
-            <p>Ваше сообщение
-              {errors.message && (
-              <span className="error">&nbsp; отсутствует, не стесняйтесь</span>
-            )}</p>
-            <textarea {...register("message",{ required: true })} />
-          </label>
-          <input className="send" type="submit" value="Отправить" />
+          {isEmailSend ? (
+            <div className="success">
+              <h4>Спасибо за ваш отзыв!</h4>
+            </div>
+          ) : (
+            <form className="message-form" onSubmit={handleSubmit(onSubmit)}>
+              <label>
+                <p>Ваше имя</p>
+                <input {...register("subject")} />
+              </label>
+              <label>
+                <p>E-mail
+                  {errors.email && (
+                    <span className="error">, обязательное поле</span>
+                  )}
+                </p>
+                <input {...register("email",{
+                  required: true,
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: ''
+                  }
+                })} />
+              </label>
+              <label>
+                <p>Ваше сообщение
+                  {errors.message && (
+                  <span className="error">&nbsp; отсутствует, не стесняйтесь</span>
+                )}</p>
+                <textarea {...register("message",{ required: true })} />
+              </label>
+              <input className="send" type="submit" value="Отправить" />
         </form>
+          )}
       </div>
       <div  className="location">
         <h3>Локация</h3>
