@@ -7,12 +7,13 @@ import './About.scss'
 const About: React.FC = () => {
   const [ref, inView] = useInView({
     threshold: 0.5,
-    triggerOnce: false
+    triggerOnce: true
   })
 
   const houseVariants = {
     hidden: { x: 400,},
-    visible: { x: 0,}
+    visible: { x: 0, transition: { duration: 2 }},
+
   }
   const textVariants = {
     visible: { opacity: 1, y: 20 },
@@ -36,9 +37,6 @@ const About: React.FC = () => {
         className="house"
         animate={inView ? 'visible' : 'hidden'}
         variants={houseVariants}
-        transition={{
-          duration: 2,
-        }}
       >
         <House className="house"/>
       </motion.div>

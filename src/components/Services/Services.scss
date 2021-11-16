@@ -7,12 +7,12 @@
   justify-content: center;
   flex-direction: column;
   min-height: 100vh;
-  margin-bottom: 100px;
   position: relative;
 
   padding: $header-scrolled-height*2 $header-scrolled-height $header-scrolled-height;
 
   @include mobile {
+    background: rgba($main_bg, 0.8);
     padding: $header-scrolled-height $header-scrolled-height/2 $header-scrolled-height/2;
   }
 
@@ -23,34 +23,50 @@
     @include desktop {
       margin: auto;
       border: none;
-      text-align: right;
+      text-align: left;
     }
   }
-
-  > .text {
-    max-width: 600px;
-    margin: $header-scrolled-height 0 0 auto;
-    font-size: 1.2rem;
+  > .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: $max-width;
+    position: relative;
 
     @include mobile {
-      margin-top: 20px;
+      //backdrop-filter: blur(5px);
+      flex-direction: column-reverse;
     }
 
-    > .residents li {
-      margin-bottom: 1rem;
+    > .text {
+      width: 50%;
+      margin: $header-scrolled-height 0 0 auto;
+      font-size: 1.2rem;
+
+      @include mobile {
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      > .residents li {
+        margin-bottom: 1rem;
+      }
     }
-  }
+    > .mosque {
+        width: 50%;
+        height: 100%;
 
-  > .divider {
-    width: 100%;
-    position: absolute;
-    top: calc(70%);
-    left: 0;
-
-    > svg {
-      width: 100%;
-      height: 100%;
-
+        @include mobile {
+          width: 100%;
+          position: absolute;
+          z-index: -1;
+          top: 64%;
+          left: 20%;
+        }
+      > svg {
+        margin-left: -25%;
+        width: 120%;
+      }
     }
   }
 }

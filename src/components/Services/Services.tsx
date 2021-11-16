@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { ReactComponent as Divider} from '../../assets/images/divider_mosque.svg'
+import { ReactComponent as Mosque} from '../../assets/images/mosque.svg'
 import './Services.scss'
 
 const residents = [
@@ -11,6 +11,7 @@ const residents = [
   {text: 'Массажный кабинет и тату-студия'},
   {text: 'Инфоцентр для туристов, где можно взять в аренду туристическое снаряжение, принять душ и воспользоваться прачечной'},
 ]
+
 const residentVariants = {
   visible: (index) => ({
     opacity: 1,
@@ -25,38 +26,45 @@ const residentVariants = {
   }
 }
 
+const mosqueVariants = {
+  hidden: { x: -400, opacity: 0},
+  visible: { x: 0, opacity: 1, transition: { duration: 2 }}
+}
+
 const Services: React.FC = () => {
   const [ref, inView] = useInView({
     threshold: 0.5,
-    triggerOnce: false
+    triggerOnce: true
   })
   return (
     <div className="Services" id="Services">
       <h3 className="header">Что мы делаем</h3>
-      <div className="text" ref={ref}>
-        <p>Мы видим SPOT как открытое пространство для неформального общения,
-          воплощения в жизнь крутых творческих идей и предоставления востребованных
-          сервисов для жителей и гостей Долины.</p>
-        <p><b>Наши сервисы или услуги</b></p>
-          <ul className="residents">
-            {residents.map((resident, index) => (
-              <motion.li
-                variants={residentVariants}
-                animate={inView ? 'visible' : 'hidden'}
-                key={index}
-                custom={index}
-              >
-                {resident.text}
-              </motion.li>
-            ))}
-          </ul>
+      <div className="content">
+        <motion.div
+          variants={mosqueVariants}
+          animate={inView ? 'visible' : 'hidden'}
+          className="mosque">
+          <Mosque/>
+        </motion.div>
+        <div className="text" ref={ref}>
+          <p>Мы видим SPOT как открытое пространство для неформального общения,
+            воплощения в жизнь крутых творческих идей и предоставления востребованных
+            сервисов для жителей и гостей Долины.</p>
+          <p><b>Наши сервисы или услуги</b></p>
+            <ul className="residents">
+              {residents.map((resident, index) => (
+                <motion.li
+                  variants={residentVariants}
+                  animate={inView ? 'visible' : 'hidden'}
+                  key={index}
+                  custom={index}
+                >
+                  {resident.text}
+                </motion.li>
+              ))}
+            </ul>
+        </div>
       </div>
-      <motion.div
-        animate={inView ? 'visible' : 'hidden'}
-        className="divider"
-      >
-        <Divider/>
-      </motion.div>
     </div>
   )
 }

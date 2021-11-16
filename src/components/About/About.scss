@@ -9,7 +9,6 @@
   max-width: $max-width;
   position: relative;
   margin: auto;
-  overflow: hidden;
   padding: $header-scrolled-height*2 $header-scrolled-height $header-scrolled-height;
 
   @include mobile {
@@ -25,12 +24,19 @@
   > .stroke {
     height: 2px;
     background: var(--mine_shaft);
+    @include mobile {
+      display: none;
+    }
   }
 
   > .text {
     margin-top: $header-scrolled-height;
     font-size: 1.2rem;
     max-width: 600px;
+
+    @include mobile {
+      margin-top: 1rem;
+    }
   }
 
   > .house {

@@ -2,11 +2,9 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-scroll'
 import Hero from './components/Hero'
-import Location from './components/Location'
 import Services from './components/Services'
 import About from './components/About'
 import Contacts from './components/Contacts'
-import { ReactComponent as Footer} from './assets/images/footer.svg'
 import './styles/App.scss'
 
 const menuItems = [
@@ -72,9 +70,7 @@ function App() {
       </motion.nav>
       <About />
       <Services />
-      <Location/>
       <Contacts />
-      <Footer />
     </div>
   );
 }
