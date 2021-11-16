@@ -8,11 +8,10 @@ import Contacts from './components/Contacts'
 import './styles/App.scss'
 
 const menuItems = [
-  {id: 'Hero', name: 'Глагне'},
+  {id: 'Hero', name: 'Главная'},
   {id: 'About', name: 'Наша миссия'},
   {id: 'Services', name: 'Что мы делаем'},
-  {id: 'Location', name: 'Локация'},
-  {id: 'Contacts', name: 'Связаться с нами'},
+  {id: 'Contacts', name: 'Контакты'},
 ]
 
 function App() {
