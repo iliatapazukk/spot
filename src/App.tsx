@@ -1,10 +1,10 @@
 import React from 'react'
-import axios from 'axios'
 import { motion } from 'framer-motion'
 import { Link } from 'react-scroll'
 import Hero from './components/Hero'
 import Services from './components/Services'
 import About from './components/About'
+import Slides from './components/Slides'
 import Contacts from './components/Contacts'
 import './styles/App.scss'
 
@@ -69,6 +69,7 @@ function App() {
           }
       </motion.nav>
       <About />
+      <Slides />
       <Services />
       <Contacts />
     </div>
