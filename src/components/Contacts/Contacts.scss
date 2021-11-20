@@ -28,6 +28,8 @@
     flex-direction: column;
   };
   > .contact-form {
+    position: relative;
+    z-index: 1;
     width: 50%;
     padding: 1rem;
 
@@ -100,6 +102,8 @@
   }
 
   > .location {
+    position: relative;
+    z-index: 1;
     width: 50%;
     padding: 1rem;
     display: flex;
@@ -119,6 +123,6 @@
     position: absolute;
     width: 100%;
     bottom: -10px;
-    z-index: -1;
+    z-index: 0;
   }
 }

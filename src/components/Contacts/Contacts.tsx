@@ -20,7 +20,7 @@ type FormData = {
 
 const footerVariants = {
   hidden: { y: 300, opacity: 0},
-  visible: { y: 0, opacity: 1, transition: { duration: 3, type: 'spring' }}
+  visible: { y: 0, opacity: 1, transition: { duration: 3}}
 }
 
 
