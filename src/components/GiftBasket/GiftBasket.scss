@@ -1,0 +1,28 @@
+@import "src/styles/mixins";
+@import "src/styles/variables";
+
+.GiftBasket {
+  min-height: 100vh;
+
+  > .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: rgba(#fff, 0.5);
+    padding: 1rem 20px;
+
+    .logo {
+      width: 120px;
+      color: var(--mine_shaft);
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+  }
+}
