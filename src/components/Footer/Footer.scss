@@ -1,0 +1,37 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.Footer {
+  background: #000000;
+  color: var(--cotton_seed);
+  padding: 2rem 20px;
+  font-size: 0.8rem;
+
+  > .links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      width: 160px;
+    }
+
+    .lnk {
+      display: inline-flex;
+      width: 30px;
+      color: var(--cotton_seed);
+      margin: 0 0 1rem 2rem;
+
+      svg {
+        width: 100%;
+        fill: var(--cotton_seed);
+        margin: 0;
+      }
+    }
+
+    .copyright {
+      text-align: right;
+    }
+  }
+}

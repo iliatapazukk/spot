@@ -6,6 +6,7 @@ import Services from './components/Services'
 import About from './components/About'
 import Slides from './components/Slides'
 import Contacts from './components/Contacts'
+import Footer from './components/Footer/Footer'
 import './styles/App.scss'
 
 const menuItems = [
@@ -72,6 +73,7 @@ function App() {
       <Slides />
       <Services />
       <Contacts />
+      <Footer/>
     </div>
   );
 }
