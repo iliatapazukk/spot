@@ -3,9 +3,10 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-scroll'
 import Hero from './components/Hero'
 import Footer from './components/Footer/Footer'
-import './styles/App.scss'
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
-import GiftBasket from './components/GiftBasket';
+import GiftBasket from './components/GiftBasket'
+import Cart from './components/Cart'
+import './styles/App.scss'
 
 const menuItems = [
   {id: 'Hero', name: 'Главная'},
@@ -70,6 +71,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Hero menuToggle={handleMenuClick}/>} />
           <Route path="/gift-basket" element={<GiftBasket/>} />
+          <Route path="/cart" element={<Cart/>} />
         </Routes>
       </BrowserRouter>
       <Footer/>

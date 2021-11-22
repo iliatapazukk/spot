@@ -20,11 +20,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2 , h3 {
+h1, h2 {
   @include font-variant(36, 54, normal, 600);
-
   font-family: 'Avenir Next Bold', system-ui, Roboto, serif;
-  margin-bottom: 1.5rem;
+}
+
+h3 {
+  @include font-variant(24, 42, normal, 600);
+  font-family: 'Avenir Next Bold', system-ui, Roboto, serif;
+  margin-bottom: 1rem;
 }
 
 p {

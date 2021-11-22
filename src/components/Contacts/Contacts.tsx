@@ -44,7 +44,6 @@ const Contacts: React.FC<Props> = (props) => {
     })
       .then((response) => {
         setIsEmailSend(true)
-        console.log('!!! ', response)
       })
       .catch((error) => {
         setIsEmailSend(false)

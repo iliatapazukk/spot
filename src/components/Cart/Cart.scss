@@ -1,0 +1,42 @@
+@import "src/styles/mixins";
+@import "src/styles/variables";
+
+.Cart {
+  min-height: 100vh;
+  padding-top: 80px; //header height
+
+  > .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(#fff, 0.5);
+    padding: 1rem 20px;
+
+    .logo {
+      width: 120px;
+      color: var(--mine_shaft);
+    }
+  }
+
+  .content {
+    max-width: $max-width;
+    margin: auto;
+
+    h2 {
+      text-align: center;
+    }
+
+    .empty {
+      text-align: center;
+      height: 40vh;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      color: var(--avocado);
+    }
+  }
+}

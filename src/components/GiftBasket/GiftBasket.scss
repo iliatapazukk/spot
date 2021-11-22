@@ -3,13 +3,14 @@
 
 .GiftBasket {
   min-height: 100vh;
+  padding-top: 80px; //header height
 
   > .header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
     background: rgba(#fff, 0.5);
@@ -20,9 +21,70 @@
       color: var(--mine_shaft);
     }
 
-    h1 {
-      margin: 0;
+    .order {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      color: var(--mine_shaft);
+      text-decoration: none;
+      padding: 6px 12px 4px;
+      margin-right: -12px;
+      border-radius: 4px;
+      @include transition;
+
+      &:hover {
+        background: rgba(#fff, 0.3);
+        box-shadow: 0 1px 2px 0 var(--main_bg);
+      }
     }
 
+    .cart {
+      width: 30px;
+      position: relative;
+      margin-left: 1rem;
+
+      > .counter {
+        position: absolute;
+        top: -8px;
+        right: -6px;
+        font-size: 11px !important;
+        font-weight: bold;
+        border-radius: 50%;
+        min-width: 19px;
+        height: 19px;
+        line-height: 18px;
+        color: #fff;
+        text-align: center;
+        background: darkred;
+        border: 1px solid #fff;
+      }
+
+      svg {
+        width: 100%;
+        display: block;
+        fill: var(--mine_shaft)
+      }
+
+    }
+
+  }
+
+  .content {
+    padding: 1rem;
+    max-width: $max-width;
+    margin: auto;
+
+    h2 {
+      text-align: center;
+      margin: 1rem 0 2rem;
+    }
+
+    > .items {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-between;
+
+    }
   }
 }
