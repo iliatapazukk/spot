@@ -5,37 +5,28 @@ import { ReactComponent as Spot} from '../../assets/images/spot.svg'
 import { ReactComponent as Cart} from '../../assets/images/cart.svg'
 import Gift from './Gift'
 import { connect } from 'react-redux'
-import { addToCart } from '../../actions/cartActions'
+import { AddCart } from '../../actions/cartActions'
 import './GiftBasket.scss'
 
 type Props = {
   //TODO: прописать типы
-  items: any
-  addToCart: any
-  addedItems: any
-}
-
-const mapStateToProps = (state) => {
-  console.log('!!! state:', state)
-  return {
-    items: state.items,
-    addedItems: state.addedItems
-  }
-}
-
-const mapDispatchToProps = (dispatch)=>{
- return{
-    addToCart: (id)=>{dispatch(addToCart(id))}
-  }
+  _products: any
+  AddCart?: any
 }
 
 const GiftBasket: React.FC<Props> = (props) => {
-  const handleClick = (id) => {
-    props.addToCart(id)
+  const {_products} = props._products
+  console.log('!!! products:', _products)
+  const handleClick = (item) => {
+    console.log('!!! item:', item)
+    AddCart(item)
   }
-  const counter = Object.keys(props.addedItems).length
-  console.log('!!! counter:', )
 
+  // const isSelected = (id) => {
+  //   return props.addedItems.find(item => item.id === id)
+  // }
+  // const [counter, setCounter] = React.useState<number>(0)
+  // React.useEffect(() => {setCounter(Object.keys(props.addedItems).length)}, [props.addedItems])
   return (
     <div className="GiftBasket">
       <header className="header">
@@ -45,8 +36,8 @@ const GiftBasket: React.FC<Props> = (props) => {
           </Link>
         </div>
         <Link to="/cart" className="order">
-          <AnimatePresence>
-            { counter !== 0 && (
+          {/*<AnimatePresence>*/}
+            {/*{ counter !== 0 && (*/}
               <motion.div
                 initial={{ opacity: 0, x: -150 }}
                 animate={{ opacity: 1, x: 0}}
@@ -55,42 +46,42 @@ const GiftBasket: React.FC<Props> = (props) => {
               >
                 <b>Оформить заказ</b>
               </motion.div>
-            )}
+            {/*)}*/}
             <div className="cart">
-              { counter !== 0 && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 2 }}
-                  animate={{ opacity: 1,  scale: 1 }}
-                  transition={{ duration: 1, type: 'spring' }}
-                  exit={{ opacity: 0 }}
-                  className="counter"
-                >{counter}</motion.div>
-              )}
+                {/*{ counter !== 0 && (*/}
+                {/*  <motion.div*/}
+                {/*    initial={{ opacity: 0, scale: 3 }}*/}
+                {/*    animate={{ opacity: 1,  scale: 1 }}*/}
+                {/*    transition={{ duration: 1, type: 'spring' }}*/}
+                {/*    exit={{ opacity: 0, scale: 2 }}*/}
+                {/*    className="counter"*/}
+                {/*  >{counter}</motion.div>*/}
+                {/*)}*/}
               <Cart />
             </div>
-          </AnimatePresence>
+          {/*</AnimatePresence>*/}
         </Link>
       </header>
       <div className="content">
         <h2>Подарочные наборы от Спота</h2>
-
         <div className="items">
-          { props.items.map(item => {
-              return (
-                <Gift
-                  id={item.id}
-                  key={item.id}
-                  title={item.title}
-                  desc={item.desc}
-                  price={item.price}
-                  img={item.img}
-                  addToCart= {async () => handleClick(item.id)}
-                />
-              )
-            })
-          }
+          {_products.length > 0 && (
+            _products.map((item, key) => {
+            return (
+              <Gift
+                key={key}
+                id={item.id}
+                title={item.title}
+                desc={item.desc}
+                price={item.price}
+                img={item.img}
+                selected={false}
+                addToCart={()=> props.AddCart(item)}
+              />
+            )}
+            )
+          )}
         </div>
-
         <div className="comeback">
           <Link to="/">
             &larr; Вернуться назад
@@ -101,4 +92,16 @@ const GiftBasket: React.FC<Props> = (props) => {
   )
 }
 
+const mapStateToProps = state => {
+  console.log('!!! state:', state)
+  return {
+    _products: state._todoProduct,
+  };
+}
+
+function mapDispatchToProps(dispatch){
+  return{
+    AddCart:item => dispatch(AddCart(item))
+  }
+}
 export default connect(mapStateToProps, mapDispatchToProps)(GiftBasket)

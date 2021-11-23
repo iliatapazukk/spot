@@ -1,6 +1,8 @@
 import React from 'react'
+import { ReactComponent as ArrowDown} from '../../../assets/images/arrow-down.svg'
+import { ReactComponent as ArrowUp} from '../../../assets/images/arrow-up.svg'
+import { ReactComponent as Remove} from '../../../assets/images/close.svg'
 import './CartItem.scss'
-import {Link} from 'react-router-dom'
 
 type Props = {
   img: string,
@@ -8,6 +10,9 @@ type Props = {
   desc: string,
   price: number,
   quantity: number,
+  add: () => void,
+  subtract: () => void,
+  remove: () => void,
 }
 
 const CartItem: React.FC<Props> = (props) => {
@@ -21,14 +26,16 @@ const CartItem: React.FC<Props> = (props) => {
         <h3>{props.title}</h3>
         <p>{props.desc}</p>
         <p><b>Цена: {props.price}₽</b></p>
-        <p>
-          <b>Количество: {props.quantity}</b>
-        </p>
-        <div className="add-remove">
-          <Link to="/cart">↑</Link>
-          <Link to="/cart">↓</Link>
+        <div className="quantity">
+          Количество:
+          {/*<ArrowDown className="arrow" role="button" onClick={props.add} />*/}
+          <div  onClick={props.add}>UP</div>
+          <b>{props.quantity}</b>
+          <div  onClick={props.subtract} >DN</div>
+          {/*<ArrowUp className="arrow" role="button" onClick={props.subtract}/>*/}
+          {/*<Remove role="button" className="remove" onClick={props.remove}/>*/}
+          <div onClick={props.remove}>remove</div>
         </div>
-        <button className="remove">Убрать из корзины</button>
       </div>
     </div>
   )

@@ -43,14 +43,20 @@
     justify-content: space-between;
     flex-direction: row;
 
-    > .add {
+    > .add,
+    > .selected {
       width: 30px;
       cursor: pointer;
 
       svg {
         width: 100%;
-        fill: var(--corduroy)
+        height: 100%;
+        fill: var(--link)
       }
+    }
+
+    > .selected {
+      cursor: default;
     }
   }
 }

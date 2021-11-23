@@ -1,6 +1,7 @@
 import React from 'react'
 import { ReactComponent as Add} from '../../../assets/images/add.svg'
-import { motion } from 'framer-motion'
+import { ReactComponent as Check} from '../../../assets/images/check.svg'
+import {AnimatePresence, motion} from 'framer-motion'
 import './Gift.scss'
 
 type Props = {
@@ -9,6 +10,7 @@ type Props = {
   img: string,
   desc: string,
   price: number,
+  selected: boolean,
   addToCart: () => {},
 }
 
@@ -24,16 +26,28 @@ const Gift: React.FC<Props> = (props) => {
       </div>
       <div className="total">
         <div>
-          Цена: {props.price}₽
+          Цена: <b>{props.price}₽</b>
         </div>
-        <motion.div
-          className="add"
-          role="button"
-          whileHover={{ scale: 1.3, transition: { type: 'spring' } }}
-          onClick={props.addToCart}
-        >
-          <Add/>
-        </motion.div>
+        <AnimatePresence>
+          {props.selected ? (
+            <motion.div
+              className="selected"
+              initial={{scale: 2, opacity: 0}}
+              animate={{ scale: 1, opacity: 1, rotate: 360, transition: { type: 'spring' } }}
+            >
+              <Check/>
+            </motion.div>
+          ) : (
+            <motion.div
+              className="add"
+              role="button"
+              whileHover={{ scale: 1.3, transition: { type: 'spring' } }}
+              onClick={props.addToCart}
+            >
+              <Add/>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   )

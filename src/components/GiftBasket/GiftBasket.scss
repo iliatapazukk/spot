@@ -13,8 +13,9 @@
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(#fff, 0.5);
+    background: rgba(#fff, 0.8);
     padding: 1rem 20px;
+    z-index: 2;
 
     .logo {
       width: 120px;

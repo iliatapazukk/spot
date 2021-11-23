@@ -4,10 +4,11 @@ import Item3 from '../assets/slides/3.jpg'
 import Item4 from '../assets/slides/4.jpg'
 import Item5 from '../assets/slides/5.jpg'
 import Item6 from '../assets/slides/6.jpg'
-import { ADD_TO_CART } from '../actions/action-types/cart-actions'
+import { combineReducers } from 'redux';
+import {GET_ALL_PRODUCT, GET_NUMBER_CART, ADD_CART, DECREASE_QUANTITY, INCREASE_QUANTITY, DELETE_CART} from  '../actions/cartActions';
 
 const initState = {
-  items: [
+  _products: [
     {
       id: 1,
       title: 'Стол да книга',
@@ -51,44 +52,100 @@ const initState = {
       img: Item6
     }
   ],
-  addedItems: [],
-  total: 0
+  numberCart: 0,
+  Carts: [],
 }
 
-const cartReducer = (state = initState, action) => {
-  if(action.type === ADD_TO_CART){
-    let addedItem = state.items.find(item=> item.id === action.id)
-    //check if the action id exists in the addedItems
-    // @ts-ignore
-    let existed_item= state.addedItems.find(item=> action.id === item.id)
-    if(existed_item)
-    {
-      // @ts-ignore
-      addedItem.quantity += 1
+function todoProduct(state = initState, action){
+  switch(action.type){
+    case GET_ALL_PRODUCT:
       return{
         ...state,
+        _products:action.payload
+      }
+    case GET_NUMBER_CART:
+      return{
+        ...state
+      }
+    case ADD_CART:
+      if(state.numberCart==0){
+        let cart = {
+          id:action.payload.id,
+          quantity:1,
+          title:action.payload.title,
+          desc:action.payload.desc,
+          img:action.payload.img,
+          price:action.payload.price
+        }
         // @ts-ignore
-        total: state.total + addedItem.price
+        state.Carts.push(cart);
       }
-    }
-    else{
-      // @ts-ignore
-      addedItem.quantity = 1;
-      //calculating the total
-      // @ts-ignore
-      let newTotal = state.total + addedItem.price
-
+      else{
+        let check = false;
+        state.Carts.map((item,key)=>{
+          // @ts-ignore
+          if(item.id==action.payload.id){
+            // @ts-ignore
+            state.Carts[key].quantity++;
+            check=true;
+          }
+        });
+        if(!check){
+          let _cart = {
+            id:action.payload.id,
+            quantity:1,
+            title:action.payload.title,
+            desc:action.payload.desc,
+            img:action.payload.img,
+            price:action.payload.price
+          }
+          // @ts-ignore
+          state.Carts.push(_cart);
+        }
+      }
       return{
         ...state,
-        addedItems: [...state.addedItems, addedItem],
-        total : newTotal
+        numberCart:state.numberCart+1
+      }
+    case INCREASE_QUANTITY:
+      state.numberCart++
+      // @ts-ignore
+      state.Carts[action.payload].quantity++;
+
+      return{
+        ...state
+      }
+    case DECREASE_QUANTITY:
+      // @ts-ignore
+      let quantity = state.Carts[action.payload].quantity;
+      if(quantity>1){
+        state.numberCart--;
+        // @ts-ignore
+        state.Carts[action.payload].quantity--;
       }
 
-    }
-  }
-  else{
-    return state
+      return{
+        ...state
+      }
+    case DELETE_CART:
+      // @ts-ignore
+      let quantity_ = state.Carts[action.payload].quantity;
+      return{
+        ...state,
+        numberCart:state.numberCart - quantity_,
+        Carts:state.Carts.filter(item=>{
+          // @ts-ignore
+          return item.id!=state.Carts[action.payload].id
+        })
+
+      }
+    default:
+      return state;
   }
 }
 
-export default cartReducer;
+const ShopApp = combineReducers({
+  _todoProduct:todoProduct
+});
+
+export default ShopApp;
