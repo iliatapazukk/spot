@@ -20,6 +20,20 @@
       width: 120px;
       color: var(--mine_shaft);
     }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--mine_shaft);
+      font-weight: bold;
+
+      svg {
+        width: 30px;
+        height: 30px;
+        margin-left: 4px;
+      }
+    }
   }
 
   .content {
@@ -38,5 +52,8 @@
       display: flex;
       color: var(--avocado);
     }
+  }
+  .total {
+    text-align: center;
   }
 }

@@ -21,20 +21,16 @@ const CartItem: React.FC<Props> = (props) => {
       <div className="img">
         <img src={props.img} alt={props.img} className=""/>
       </div>
-
       <div className="description">
         <h3>{props.title}</h3>
         <p>{props.desc}</p>
         <p><b>Цена: {props.price}₽</b></p>
         <div className="quantity">
           Количество:
-          {/*<ArrowDown className="arrow" role="button" onClick={props.add} />*/}
-          <div  onClick={props.add}>UP</div>
+          <ArrowDown className="arrow" role="button" onClick={props.subtract} />
           <b>{props.quantity}</b>
-          <div  onClick={props.subtract} >DN</div>
-          {/*<ArrowUp className="arrow" role="button" onClick={props.subtract}/>*/}
-          {/*<Remove role="button" className="remove" onClick={props.remove}/>*/}
-          <div onClick={props.remove}>remove</div>
+          <ArrowUp className="arrow" role="button" onClick={props.add}/>
+          <Remove role="button" className="remove" onClick={props.remove}/>
         </div>
       </div>
     </div>

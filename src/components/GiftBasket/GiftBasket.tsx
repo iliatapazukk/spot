@@ -12,21 +12,17 @@ type Props = {
   //TODO: прописать типы
   _products: any
   AddCart?: any
+  numberCart: number
+  carts: any
 }
 
 const GiftBasket: React.FC<Props> = (props) => {
   const {_products} = props._products
-  console.log('!!! products:', _products)
-  const handleClick = (item) => {
-    console.log('!!! item:', item)
-    AddCart(item)
+
+  const isSelected = (id) => {
+    return props.carts.find(item => item.id === id)
   }
 
-  // const isSelected = (id) => {
-  //   return props.addedItems.find(item => item.id === id)
-  // }
-  // const [counter, setCounter] = React.useState<number>(0)
-  // React.useEffect(() => {setCounter(Object.keys(props.addedItems).length)}, [props.addedItems])
   return (
     <div className="GiftBasket">
       <header className="header">
@@ -36,8 +32,8 @@ const GiftBasket: React.FC<Props> = (props) => {
           </Link>
         </div>
         <Link to="/cart" className="order">
-          {/*<AnimatePresence>*/}
-            {/*{ counter !== 0 && (*/}
+          <AnimatePresence>
+            { props.numberCart !== 0 && (
               <motion.div
                 initial={{ opacity: 0, x: -150 }}
                 animate={{ opacity: 1, x: 0}}
@@ -46,24 +42,27 @@ const GiftBasket: React.FC<Props> = (props) => {
               >
                 <b>Оформить заказ</b>
               </motion.div>
-            {/*)}*/}
+            )}
+          </AnimatePresence>
+          <AnimatePresence>
             <div className="cart">
-                {/*{ counter !== 0 && (*/}
-                {/*  <motion.div*/}
-                {/*    initial={{ opacity: 0, scale: 3 }}*/}
-                {/*    animate={{ opacity: 1,  scale: 1 }}*/}
-                {/*    transition={{ duration: 1, type: 'spring' }}*/}
-                {/*    exit={{ opacity: 0, scale: 2 }}*/}
-                {/*    className="counter"*/}
-                {/*  >{counter}</motion.div>*/}
-                {/*)}*/}
+                { props.numberCart !== 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 3 }}
+                    animate={{ opacity: 1,  scale: 1 }}
+                    transition={{ duration: 1, type: 'spring' }}
+                    exit={{ opacity: 0, scale: 2 }}
+                    className="counter"
+                  >{props.numberCart}</motion.div>
+                )}
               <Cart />
             </div>
-          {/*</AnimatePresence>*/}
+          </AnimatePresence>
         </Link>
       </header>
       <div className="content">
         <h2>Подарочные наборы от Спота</h2>
+        <p>Поторопитесь сделать предзаказ, количество ограничено</p>
         <div className="items">
           {_products.length > 0 && (
             _products.map((item, key) => {
@@ -75,7 +74,7 @@ const GiftBasket: React.FC<Props> = (props) => {
                 desc={item.desc}
                 price={item.price}
                 img={item.img}
-                selected={false}
+                selected={isSelected(item.id)}
                 addToCart={()=> props.AddCart(item)}
               />
             )}
@@ -96,6 +95,8 @@ const mapStateToProps = state => {
   console.log('!!! state:', state)
   return {
     _products: state._todoProduct,
+    numberCart: state._todoProduct.numberCart,
+    carts: state._todoProduct.Carts
   };
 }
 
@@ -104,4 +105,5 @@ function mapDispatchToProps(dispatch){
     AddCart:item => dispatch(AddCart(item))
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(GiftBasket)

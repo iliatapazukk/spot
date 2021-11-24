@@ -4,6 +4,7 @@ import {IncreaseQuantity, DecreaseQuantity, DeleteCart} from '../../actions/cart
 import CartItem from './CartItem'
 import {Link} from 'react-router-dom'
 import {ReactComponent as Spot} from '../../assets/images/spot.svg'
+import {ReactComponent as Gift} from '../../assets/images/giftbox.svg'
 import './Cart.scss'
 
 type Props = {
@@ -14,7 +15,6 @@ type Props = {
 }
 
 const mapStateToProps = state =>{
-  //  console.log(state)
   return{
     items:state._todoProduct
   }
@@ -29,18 +29,20 @@ const Cart: React.FC<Props> = (props) => {
     // @ts-ignore
     ListCart.push(props.items.Carts[item]);
   })
-  function TotalPrice(price,tonggia){
-    return Number(price * tonggia).toLocaleString('en-US');
-  }
+
+  // function TotalPrice(price,tonggia){
+  //   return Number(price * tonggia).toLocaleString('en-US');
+  // }
 
   return (
     <div className="Cart">
       <header className="header">
-        <div>
           <Link to="/">
             <Spot className="logo" />
           </Link>
-        </div>
+          <Link to="/gift-basket" className="back">
+            Вернуться к подаркам <Gift/>
+          </Link>
       </header>
       <div className="content">
         <h2>Корзина подарков</h2>
@@ -67,7 +69,9 @@ const Cart: React.FC<Props> = (props) => {
               </div>
             )}
         </div>
-        <div>TOTAL: {TotalCart}</div>
+        {TotalCart && (
+          <div className="total">Общая сумма заказа: <b>{TotalCart}₽</b></div>
+        )}
       </div>
     </div>
   )
