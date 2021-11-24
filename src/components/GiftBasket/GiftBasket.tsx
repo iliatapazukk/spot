@@ -62,7 +62,7 @@ const GiftBasket: React.FC<Props> = (props) => {
       </header>
       <div className="content">
         <h2>Подарочные наборы от Спота</h2>
-        <p>Поторопитесь сделать предзаказ, количество ограничено</p>
+        <h4>Поторопитесь сделать предзаказ, количество ограничено</h4>
         <div className="items">
           {_products.length > 0 && (
             _products.map((item, key) => {
