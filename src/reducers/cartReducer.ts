@@ -1,56 +1,90 @@
-import Item1 from '../assets/slides/1.jpg'
-import Item2 from '../assets/slides/7.jpg'
-import Item3 from '../assets/slides/3.jpg'
-import Item4 from '../assets/slides/4.jpg'
-import Item5 from '../assets/slides/5.jpg'
-import Item6 from '../assets/slides/6.jpg'
+import Privet from '../assets/gifts/privet.jpeg'
+import Radost from '../assets/gifts/radost.jpeg'
+import Vdoh from '../assets/gifts/vdoh.jpeg'
+import Vostorg from '../assets/gifts/vostorg.jpeg'
 import { combineReducers } from 'redux';
 import {GET_ALL_PRODUCT, GET_NUMBER_CART, ADD_CART, DECREASE_QUANTITY, INCREASE_QUANTITY, DELETE_CART} from  '../actions/cartActions';
 
+
 const initState = {
-  _products: [
+  products: [
     {
       id: 1,
-      title: 'Стол да книга',
-      desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.',
-      price: 110,
-      img: Item1
+      title: 'Крымский тёплый ПРИВЕТ',
+      desc: [
+        'Свеча медовая из вощины (воск с пасеки) с натуральными смолами и травами',
+        'Натуральное мыло с добавлением крымских трав',
+        'Баночка варенья с айвой из домашнего сада (100 гр)',
+        'Чайный сбор плиткой из крымских трав, ягод и цветов',
+        'Шоколад на меду по RAW технологии от домашней мастерской (100 гр)',
+        'Благовония из крымских трав',
+        'Новогодняя игрушка из спила дерева с изображением тигра',
+        'Авторская открытка от местной художницы',
+        'Шишка горная лесная'
+
+      ],
+      price: 4500,
+      img: Privet,
     },
     {
       id: 2,
-      title: 'Бирюли',
-      desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.',
-      price: 80,
-      img: Item2
+      title: 'Крымское тёплое ВДОХНОВЕНИЕ',
+      desc: [
+        'Свеча медовая из вощины (воск с пасеки) с натуральными смолами и травами',
+        'Эфирное масло лаванды (10 мл)',
+        'Натуральное мыло с добавлением крымских трав',
+        'Баночка варенья с айвой из домашнего сада (100 гр)',
+        'Чайный сбор плиткой из крымских трав, ягод и цветов',
+        'Шоколад на меду по RAW технологии от домашней мастерской (100 гр)',
+        'Благовония из крымских трав',
+        'Букетик лаванды',
+        'Новогодняя игрушка из спила дерева с изображением тигра',
+        'Авторская открытка от местной художницы',
+        'Шишка горная лесная',
+      ],
+      price: 4000,
+      img: Vdoh,
     },
     {
       id: 3,
-      title: 'Кофеек',
-      desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.',
-      price: 120,
-      img: Item3
+      title: 'Крымская тёплая РАДОСТЬ',
+      desc: [
+        'Свеча медовая из вощины (воск с пасеки) с натуральными смолами и травами ',
+        'Эфирное масло лаванды (10 мл)',
+        'Натуральное мыло с добавлением крымских трав',
+        'Баночка варенья с айвой из домашнего сада (100 гр)',
+        'Чайный сбор плиткой из крымских трав, ягод и цветов ',
+        'Шоколад на меду по RAW технологии от домашней мастерской 100 гр',
+        'Благовония из крымских трав',
+        'Букетик лаванды',
+        'Новогодняя игрушка из спила дерева с изображением тигра',
+        'Авторская открытка от местной художницы',
+        'Шишка горная лесная',
+        'Керамическая вазочка от семейной мастерской'
+      ],
+      price: 3500,
+      img: Radost,
     },
     {
       id: 4,
-      title: 'Ветроволос',
-      desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.',
-      price: 260,
-      img: Item4
+      title: 'Крымский тёплый ВОСТОРГ',
+      desc: [
+        'Свеча медовая из вощины (воск с пасеки) с натуральными смолами и травами',
+        'Эфирное масло лаванды (10 мл)',
+        'Натуральное мыло с добавлением крымских трав',
+        'Баночка варенья с айвой из домашнего сада (100 гр)',
+        'Чайный сбор плиткой из крымских трав, ягод и цветов',
+        'Шоколад на меду по RAW технологии от домашней мастерской (100 гр)',
+        'Благовония из крымских трав',
+        'Букетик лаванды',
+        'Новогодняя игрушка из спила дерева с изображением тигра',
+        'Авторская открытка от местной художницы',
+        'Шишка горная лесная',
+        'Керамическая пиала, декорированная глазурью, от семейной мастерской'
+      ],
+      price: 3000,
+      img: Vostorg,
     },
-    {
-      id: 5,
-      title: 'Цугцванг',
-      desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.',
-      price: 160,
-      img: Item5
-    },
-    {
-      id: 6,
-      title: 'Бирюли-висюли',
-      desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.',
-      price: 90,
-      img: Item6
-    }
   ],
   numberCart: 0,
   Carts: [],
@@ -61,7 +95,7 @@ function todoProduct(state = initState, action){
     case GET_ALL_PRODUCT:
       return{
         ...state,
-        _products:action.payload
+        products:action.payload
       }
     case GET_NUMBER_CART:
       return{

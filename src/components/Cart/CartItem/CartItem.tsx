@@ -3,11 +3,12 @@ import { ReactComponent as ArrowDown} from '../../../assets/images/arrow-down.sv
 import { ReactComponent as ArrowUp} from '../../../assets/images/arrow-up.svg'
 import { ReactComponent as Remove} from '../../../assets/images/close.svg'
 import './CartItem.scss'
+import {ReactComponent as CheckMark} from '../../../assets/images/check-mark.svg';
 
 type Props = {
   img: string,
   title: string,
-  desc: string,
+  desc: [],
   price: number,
   quantity: number,
   add: () => void,
@@ -23,7 +24,14 @@ const CartItem: React.FC<Props> = (props) => {
       </div>
       <div className="description">
         <h3>{props.title}</h3>
-        <p>{props.desc}</p>
+        <ul className="items">
+          {props.desc.map((item, index) =>
+            <li key={index}>
+              <CheckMark/>
+              {item}
+            </li>
+          )}
+        </ul>
         <p><b>Цена: {props.price}₽</b></p>
         <div className="quantity">
           Количество:

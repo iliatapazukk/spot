@@ -4,6 +4,14 @@
 .GiftBasket {
   min-height: 100vh;
   padding-top: 80px; //header height
+  position: relative;
+
+  .divider {
+    position: fixed;
+    z-index: 0;
+    opacity: 0.3;
+    bottom: 0;
+  }
 
   > .header {
     display: flex;
@@ -74,6 +82,8 @@
     padding: 1rem;
     max-width: $max-width;
     margin: auto;
+    background: rgba(var(--main_bg), 0.68);
+    backdrop-filter: blur(5px);
 
     h2 {
       text-align: center;

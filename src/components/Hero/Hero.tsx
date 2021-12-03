@@ -12,9 +12,10 @@ import { ReactComponent as Foreground } from '../../assets/images/foreground.svg
 import { ReactComponent as Spot} from '../../assets/images/spot.svg'
 import { ReactComponent as Menu} from '../../assets/images/menu.svg'
 import About from '../About';
-import Slides from '../Slides/Slides';
+import Slides from '../Slides';
 import Services from '../Services';
-import Contacts from '../Contacts/Contacts';
+import Contacts from '../Contacts';
+import GiftAnnounce from '../GiftAnnounce';
 import './Hero.scss'
 
 type Props = {
@@ -104,6 +105,7 @@ const Hero: React.FC<Props> = (props) => {
           </motion.div>
         </div>
       </motion.div>
+      <GiftAnnounce />
       <About />
       <Slides />
       <Services />
