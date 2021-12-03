@@ -1,0 +1,67 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.CartItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--avocado);
+
+  @include mobile {
+    flex-direction: column;
+  }
+
+  > .img {
+    width: 60%;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-right: 1rem;
+
+    @include mobile {
+      width: 100%;
+    }
+
+    > img {
+      width: 100%;
+    }
+
+  }
+
+  > .description {
+    h3 {
+      margin-bottom: 10px;
+    }
+
+    .items {
+      font-size: 1rem;
+
+      > li {
+        padding: 0;
+        list-style-type: none;
+        margin-bottom: 1rem;
+
+        svg {
+          width: 12px;
+          height: 12px;
+          margin-right: 6px;
+          display: inline-block;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    > .quantity {
+      display: flex;
+      flex-direction: row;
+
+      > .arrow,
+      > .remove {
+        width: 16px;
+        height: 16px;
+        margin: 4px;
+      }
+    }
+  }
+}

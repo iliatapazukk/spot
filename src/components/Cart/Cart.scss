@@ -1,0 +1,167 @@
+@import "src/styles/mixins";
+@import "src/styles/variables";
+
+.Cart {
+  min-height: 100vh;
+  padding-top: 80px; //header height
+
+  > .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(#fff, 0.8);
+    padding: 1rem 20px;
+
+    .logo {
+      width: 120px;
+      color: var(--mine_shaft);
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--mine_shaft);
+      font-weight: bold;
+
+      svg {
+        width: 30px;
+        height: 30px;
+        margin-left: 4px;
+      }
+    }
+  }
+
+  .content {
+    max-width: $max-width;
+    margin: auto;
+
+    h2 {
+      text-align: center;
+    }
+
+    .empty {
+      text-align: center;
+      height: 40vh;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      color: var(--avocado);
+    }
+    .total {
+      text-align: center;
+    }
+
+    > .success {
+      display: flex;
+      flex-grow: 1;
+      overflow: hidden;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 340px;
+      background: rgba($main_bg, 0.9);
+      padding: $header-scrolled-height/2;
+
+    }
+
+    > .order-form {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+      margin: 1rem auto 2rem;
+
+      > label {
+        > p {
+          margin: 0;
+          font-size: 0.9rem;
+          font-weight: bold;
+
+          > .error {
+            color: #9e0303;
+            font-size: 0.9rem;
+          }
+        }
+        > input,
+        > select,
+        > textarea {
+          @include  transition;
+
+          font-size: 1rem;
+          font-family: 'Avenir Next Regular', system-ui, Roboto, serif;
+          margin: 8px 0;
+          width: 100%;
+          padding: 8px;
+          border-radius: 6px;
+          resize: none;
+          box-sizing: border-box;
+          border: none;
+          background: rgba($main_bg, 0.3);
+          backdrop-filter: blur(5px);
+          outline: none;
+          box-shadow: inset 1px 1px 2px 1px var(--corduroy);
+
+          &:active,
+          &:focus {
+            background-color: rgba($shadow_green, 0.5);
+          }
+        }
+
+        > textarea {
+          height: 180px;
+        }
+
+        > .combined {
+          display: flex;
+          flex-direction: row;
+          > input,
+          > select {
+            font-size: 1rem;
+            font-family: 'Avenir Next Regular', system-ui, Roboto, serif;
+            margin: 8px 0;
+            width: 100%;
+            padding: 8px;
+            resize: none;
+            box-sizing: border-box;
+            border: none;
+            background: rgba($main_bg, 0.3);
+            backdrop-filter: blur(5px);
+            outline: none;
+            box-shadow: inset 1px 1px 2px 1px var(--corduroy);
+            &:active,
+            &:focus {
+              background-color: rgba($shadow_green, 0.5);
+            }
+          }
+          > select {
+            border-radius: 6px 0 0 6px;
+            width: 30%;
+          }
+
+          > input {
+            border-radius: 0 6px 6px 0;
+          }
+        }
+      }
+
+      > .send {
+        @include button;
+      }
+    }
+    > .success {
+      display: flex;
+      flex-grow: 1;
+      overflow: hidden;
+      justify-content: center;
+      align-items: center;
+      min-height: 340px;
+      background: rgba($main_bg, 0.9);
+      padding: $header-scrolled-height/2;
+
+    }
+  }
+}

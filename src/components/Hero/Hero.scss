@@ -19,7 +19,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(#fff, 0.5);
+    background: rgba(#fff, 0.8);
     position: relative;
     z-index: 4;
 
@@ -50,12 +50,12 @@
       }
     }
 
-    > .social {
+    .social {
       display: flex;
       justify-content: space-around;
       margin: 3rem 0;
 
-      > a {
+      a {
         @include transition();
 
         display: flex;
@@ -63,13 +63,14 @@
         height: 60px;
         align-items: center;
         justify-content: center;
-        color: #000;
+        color: var(--mine_shaft);
         margin: 0 1.5rem;
         opacity: 0.9;
 
         svg {
           display: block;
           width: 100%;
+          fill: var(--mine_shaft);
         }
 
         &:hover {
@@ -88,7 +89,7 @@
       flex-direction: row;
       justify-content: space-between;
 
-      > .logo {
+      .logo {
         width: 100px;
         margin: 0.5rem 1rem;
         display: flex;
@@ -97,7 +98,7 @@
         position: relative;
         z-index: 1000;
 
-        > .menu {
+        .menu {
           opacity: 1;
           margin-left: 0.5rem;
           width: 40px;
@@ -106,7 +107,7 @@
       }
 
       > .social {
-        > a {
+        a {
           width: 30px;
           height: 30px;
           margin: 0 1rem;

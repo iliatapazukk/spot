@@ -1,19 +1,6 @@
 @import "../../styles/mixins";
 @import "../../styles/variables";
 
-@mixin button {
-  @include font-variant(18, 24);
-
-  font-size: 1rem;
-  background: var(--pewter_secondary);
-  font-weight: bold;
-  padding: 1rem;
-  border: none;
-  border-radius: 6px;
-  box-shadow: 1px 1px 2px 1px var(--corduroy);
-  text-align: center;
-}
-
 .Contacts {
   display: flex;
   padding: 64px 0 0;
@@ -24,7 +11,8 @@
 
   @include mobile {
     flex-direction: column;
-  };
+  }
+
   > .contact-form {
     position: relative;
     z-index: 1;
@@ -40,6 +28,7 @@
       display: flex;
       flex-direction: column;
     }
+
     > .message-form {
       display: flex;
       flex-direction: column;
