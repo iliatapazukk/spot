@@ -2,6 +2,7 @@ import React from 'react'
 import {AnimatePresence, motion} from 'framer-motion'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
+import Confetti from 'react-dom-confetti'
 import './OrderForm.scss'
 
 type Props = {
@@ -11,6 +12,21 @@ type Props = {
 }
 
 const OrderForm: React.FC<Props> = (props) => {
+
+  const confetti = {
+    angle: 90,
+    spread: 360,
+    startVelocity: 40,
+    elementCount: 70,
+    dragFriction: 0.12,
+    duration: 3000,
+    stagger: 3,
+    width: '10px',
+    height: '10px',
+    perspective: '500px',
+    colors: ['#a864fd', '#29cdff', '#78ff44', '#ff718d', '#fdff6a']
+  }
+
   const [isEmailSend, setIsEmailSend] = React.useState<boolean>(false)
   const API_PATH = 'https://spotcreative.space/api/order/index.php'
   type FormData = {
@@ -136,6 +152,7 @@ const OrderForm: React.FC<Props> = (props) => {
         <input className="send" type="submit" value="Отправить" />
       </form>
       )}
+      <Confetti active={isEmailSend} config={confetti}/>
     </div>
   )
 }

@@ -1,11 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {motion, AnimatePresence} from 'framer-motion'
+import {connect} from 'react-redux'
 import {ReactComponent as Spot} from '../../assets/images/spot.svg'
 import {ReactComponent as Cart} from '../../assets/images/cart.svg'
 import {ReactComponent as Divider} from '../../assets/images/divider-mono.svg'
 import Gift from './Gift'
-import {connect} from 'react-redux'
+import GiftSlides from '../GiftSlides'
 import {AddCart} from '../../actions/cartActions'
 import './GiftBasket.scss'
 
@@ -69,6 +70,7 @@ const GiftBasket: React.FC<Props> = (props) => {
           мастей, поддерживающих единые ценности. Из продуктов их творчества мы и собрали для вас эти подарочные наборы.
           Все элементы набора сделаны вручную из натуральных ингредиентов, главный из которых - любовь!
         </h4>
+        {/*<GiftSlides />*/}
         <div className="items">
           {products.length > 0 && (
             products.map((item, key) => {
