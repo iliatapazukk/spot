@@ -13,8 +13,13 @@
     justify-content: space-between;
     align-items: center;
 
+
     .logo {
       width: 160px;
+
+      @include mobile {
+        width: 100px;
+      }
     }
 
     .lnk {
@@ -22,6 +27,10 @@
       width: 30px;
       color: var(--cotton_seed);
       margin: 0 0 1rem 2rem;
+
+      @include mobile {
+        width: 24px;
+      }
 
       svg {
         width: 100%;

@@ -50,10 +50,8 @@ const Cart: React.FC<Props> = (props) => {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm<FormData>();
+  } = useForm<FormData>()
 
-  ListCart = []
-  console.log('!!!:', ListCart.length)
   const onSubmit = (data) => {
     axios({
       method: 'POST',
@@ -65,8 +63,6 @@ const Cart: React.FC<Props> = (props) => {
     })
       .then((response) => {
         setIsEmailSend(true)
-        ListCart = []
-        TotalCart = 0
       })
       .catch((error) => {
         setIsEmailSend(false)
@@ -103,7 +99,7 @@ const Cart: React.FC<Props> = (props) => {
       <div className="content">
         <h2>Корзина подарков</h2>
         <div className="collection">
-          {ListCart.length > 0 ? (
+          {ListCart.length ? (
             ListCart.map( (item: any, key) => {
               return (
                   <CartItem

@@ -27,11 +27,21 @@
       text-decoration: none;
       color: var(--mine_shaft);
       font-weight: bold;
+      white-space: nowrap;
+
+      @include mobile {
+        font-size: 16px;
+      }
 
       svg {
         width: 30px;
         height: 30px;
         margin-left: 4px;
+
+        @include mobile {
+          width: 20px;
+          height: 20px;
+        }
       }
     }
   }
@@ -74,6 +84,10 @@
       flex-direction: column;
       max-width: 600px;
       margin: 1rem auto 2rem;
+
+      @include mobile {
+        padding: 1rem;
+      }
 
       > label {
         > p {

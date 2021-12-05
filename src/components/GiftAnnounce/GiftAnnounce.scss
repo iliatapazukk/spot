@@ -2,13 +2,16 @@
 @import "src/styles/variables";
 
 .GiftAnnounce {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: auto;
   max-width: 740px;
+
+  @include mobile {
+    padding: 16px 32px;
+  }
 
   h2 {
     margin-bottom: 2rem;
@@ -27,7 +30,11 @@
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
-    margin: 2rem;
+    margin: 2rem 0;
+
+    @include mobile {
+      font-size: 18px;
+    }
 
     > svg {
       width: 30px;

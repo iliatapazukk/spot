@@ -17,7 +17,7 @@ const GiftAnnounce: React.FC<Props> = (props) => {
     </p>
 
     <Link to="gift-basket" className="lnk">
-      Выбери свой крымский теплый <Gift/>
+      Выбери свой крымский теплый подарок <Gift/>
     </Link>
 
     </div>
