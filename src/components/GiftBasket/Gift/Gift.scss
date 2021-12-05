@@ -32,6 +32,10 @@
     .card-title {
       font-size: 1.4rem;
       margin-bottom: 1rem;
+
+      > small {
+        white-space: nowrap;
+      }
     }
 
     .description {

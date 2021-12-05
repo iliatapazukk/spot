@@ -3,7 +3,15 @@ import Radost from '../assets/gifts/radost.jpeg'
 import Vdoh from '../assets/gifts/vdoh.jpeg'
 import Vostorg from '../assets/gifts/vostorg.jpeg'
 import { combineReducers } from 'redux';
-import {GET_ALL_PRODUCT, GET_NUMBER_CART, ADD_CART, DECREASE_QUANTITY, INCREASE_QUANTITY, DELETE_CART} from  '../actions/cartActions';
+import {
+  GET_ALL_PRODUCT,
+  GET_NUMBER_CART,
+  ADD_CART,
+  DECREASE_QUANTITY,
+  INCREASE_QUANTITY,
+  DELETE_CART,
+  CLEAR_CART
+} from  '../actions/cartActions';
 
 
 const initState = {
@@ -21,9 +29,8 @@ const initState = {
         'Новогодняя игрушка из спила дерева с изображением тигра',
         'Авторская открытка от местной художницы',
         'Шишка горная лесная'
-
       ],
-      price: 4500,
+      price: 3000,
       img: Privet,
     },
     {
@@ -42,7 +49,7 @@ const initState = {
         'Авторская открытка от местной художницы',
         'Шишка горная лесная',
       ],
-      price: 4000,
+      price: 3500,
       img: Vdoh,
     },
     {
@@ -62,7 +69,7 @@ const initState = {
         'Шишка горная лесная',
         'Керамическая вазочка от семейной мастерской'
       ],
-      price: 3500,
+      price: 4000,
       img: Radost,
     },
     {
@@ -82,7 +89,7 @@ const initState = {
         'Шишка горная лесная',
         'Керамическая пиала, декорированная глазурью, от семейной мастерской'
       ],
-      price: 3000,
+      price: 4500,
       img: Vostorg,
     },
   ],
@@ -102,7 +109,7 @@ function todoProduct(state = initState, action){
         ...state
       }
     case ADD_CART:
-      if(state.numberCart==0){
+      if(state.numberCart === 0){
         let cart = {
           id:action.payload.id,
           quantity:1,
@@ -116,9 +123,9 @@ function todoProduct(state = initState, action){
       }
       else{
         let check = false;
-        state.Carts.map((item,key)=>{
+        state.Carts.map( (item,key) => {
           // @ts-ignore
-          if(item.id==action.payload.id){
+          if(item.id === action.payload.id){
             // @ts-ignore
             state.Carts[key].quantity++;
             check=true;
@@ -164,15 +171,20 @@ function todoProduct(state = initState, action){
     case DELETE_CART:
       // @ts-ignore
       let quantity_ = state.Carts[action.payload].quantity;
-      return{
+      return {
         ...state,
-        numberCart:state.numberCart - quantity_,
+        numberCart: state.numberCart - quantity_,
         Carts:state.Carts.filter(item=>{
           // @ts-ignore
-          return item.id!=state.Carts[action.payload].id
+          return item.id !== state.Carts[action.payload].id
         })
-
       }
+      case CLEAR_CART:
+        return {
+          ...state,
+          numberCart: 0,
+          Carts: [],
+        }
     default:
       return state;
   }

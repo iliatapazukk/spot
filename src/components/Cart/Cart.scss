@@ -63,19 +63,21 @@
       color: var(--avocado);
     }
     .total {
-      text-align: center;
-    }
-
-    > .success {
       display: flex;
-      flex-grow: 1;
-      overflow: hidden;
-      justify-content: center;
       align-items: center;
       flex-direction: column;
-      min-height: 340px;
-      background: rgba($main_bg, 0.9);
-      padding: $header-scrolled-height/2;
+
+      h3 {
+        text-align: center;
+      }
+      .order-button {
+        @include button;
+
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 32px;
+        cursor: pointer;
+      }
 
     }
 

@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals'
 import cartReducer from './reducers/cartReducer'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import thunk from 'redux-thunk'
 
 // @ts-ignore
 const store = createStore(cartReducer)

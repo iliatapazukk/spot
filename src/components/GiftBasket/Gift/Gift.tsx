@@ -22,7 +22,7 @@ const Gift: React.FC<Props> = (props) => {
         <img src={props.img} alt={props.title}/>
       </div>
       <div className="content">
-        <h3 className="card-title">{props.title}</h3>
+        <h3 className="card-title">{props.title} (<small>{props.desc.length} предметов</small>)</h3>
         <ul className="description">
           {props.desc.map((item, index) =>
             <li key={index}>

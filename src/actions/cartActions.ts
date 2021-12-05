@@ -5,6 +5,7 @@ export const GET_NUMBER_CART = 'GET_NUMBER_CART';
 export const ADD_CART = 'ADD_CART' ;
 export const UPDATE_CART = 'UPDATE_CART';
 export const DELETE_CART = 'DELETE_CART';
+export const CLEAR_CART = 'CLEAR_CART';
 
 
 /*GET_ALL_PRODUCT*/
@@ -28,12 +29,7 @@ export function AddCart(payload){
     payload
   }
 }
-export function UpdateCart(payload){
-  return {
-    type:'UPDATE_CART',
-    payload
-  }
-}
+
 export function DeleteCart(payload){
   return{
     type:'DELETE_CART',
@@ -47,9 +43,19 @@ export function IncreaseQuantity(payload){
     payload
   }
 }
+
 export function DecreaseQuantity(payload){
   return{
     type:'DECREASE_QUANTITY',
     payload
   }
 }
+
+
+export function ClearCart(payload){
+  return{
+    type:'CLEAR_CART',
+    payload
+  }
+}
+

@@ -35,7 +35,7 @@ const GiftBasket: React.FC<Props> = (props) => {
         </div>
         <Link to="/cart" className="order">
           <AnimatePresence>
-            {props.numberCart !== 0 && (
+            {props.numberCart && props.numberCart !== 0 && (
               <motion.div
                 initial={{opacity: 0, x: -150}}
                 animate={{opacity: 1, x: 0}}
@@ -57,7 +57,7 @@ const GiftBasket: React.FC<Props> = (props) => {
                   className="counter"
                 >{props.numberCart}</motion.div>
               )}
-              <Cart/>
+              {props.numberCart !== 0 && (<Cart/>)}
             </div>
           </AnimatePresence>
         </Link>
