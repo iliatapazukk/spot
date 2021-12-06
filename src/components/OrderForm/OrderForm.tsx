@@ -152,7 +152,9 @@ const OrderForm: React.FC<Props> = (props) => {
         <input className="send" type="submit" value="Отправить" />
       </form>
       )}
-      <Confetti active={isEmailSend} config={confetti}/>
+      <div className="confetti">
+        <Confetti active={isEmailSend} config={confetti}/>
+      </div>
     </div>
   )
 }

@@ -2,6 +2,17 @@
 @import "src/styles/variables";
 
 .OrderForm {
+  .confetti {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    width: 100%;
+
+    > div {
+      width: 100%;
+    }
+  }
   > .form {
     display: flex;
     position: relative;
