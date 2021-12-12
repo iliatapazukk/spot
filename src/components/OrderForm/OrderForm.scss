@@ -2,6 +2,9 @@
 @import "src/styles/variables";
 
 .OrderForm {
+  height: 100vh;
+  overflow-y: scroll;
+
   .confetti {
     display: flex;
     align-items: center;
@@ -21,7 +24,7 @@
     margin: 1rem auto 2rem;
 
     @include mobile {
-      width: unset;
+      width: 100%;
       padding: 1rem;
     }
 

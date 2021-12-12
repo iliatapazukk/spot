@@ -4,6 +4,7 @@ import { ReactComponent as Check} from '../../../assets/images/check.svg'
 import { ReactComponent as CheckMark} from '../../../assets/images/check-mark.svg'
 import {AnimatePresence, motion} from 'framer-motion'
 import './Gift.scss'
+import {Link} from 'react-router-dom';
 
 type Props = {
   id: number,
@@ -39,10 +40,10 @@ const Gift: React.FC<Props> = (props) => {
             {props.selected ? (
               <motion.div
                 className="selected"
-                initial={{scale: 4, opacity: 0}}
-                animate={{ scale: 1, opacity: 1, rotate: 360, transition: { type: 'spring' } }}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1, transition: { type: 'spring' } }}
               >
-                <Check/>
+                <Check/> <Link to='/cart'>Перейти к оформлению заказа</Link>
               </motion.div>
             ) : (
               <motion.div
