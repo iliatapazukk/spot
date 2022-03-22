@@ -1,7 +1,6 @@
 import React from 'react'
 import { ReactComponent as Vk } from '../../assets/images/vk.svg'
 import { ReactComponent as Tg } from '../../assets/images/tg.svg'
-import { ReactComponent as Inst } from '../../assets/images/inst.svg'
 import { ReactComponent as Spot} from '../../assets/images/spot.svg'
 import './Footer.scss'
 
@@ -24,14 +23,6 @@ const Footer: React.FC = () => {
             className="lnk"
           >
             <Tg/>
-          </a>
-          <a
-            href="https://www.instagram.com/spot_creative_space/"
-            target="_blank"
-            rel="noreferrer noopener"
-            className="lnk"
-          >
-            <Inst/>
           </a>
           <a
             href="https://vk.com/spot_creative_space"
